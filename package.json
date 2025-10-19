@@ -2,7 +2,7 @@
   "name": "nodejs-cms",
   "version": "1.0.0",
   "description": "A clean and simple Content Management System built with Node.js. Features user authentication, post management, and REST API.  **Technologies:** Node.js, Express, MySQL, JWT **Status:** In development",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Pmahdian/Nodejs-cms.git"
   },
-  "author": "",
+  "author": "Parnian Mahdian",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Pmahdian/Nodejs-cms/issues"

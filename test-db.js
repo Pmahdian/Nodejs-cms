@@ -1,4 +1,4 @@
-const pool = require('../config/database');  // به جای ./src/config/database
+const pool = require('./src/config/database');
 
 // چک کنیم مقادیر از .env درست خوانده شدن
 console.log('DB_HOST:', process.env.DB_HOST);

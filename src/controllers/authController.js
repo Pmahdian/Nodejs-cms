@@ -10,11 +10,18 @@ const register = async (req,res) =>{
 
     pool.query('select * from users where email = ? or username = ?',
         [email, username],
-        (error,result) => {
-            if (error) 
+        (error,results) => {
+            if (error) {
                 return res.status(500).json({error : 'there is an error with database'});
 
         }
+            // اگر results.length > 0 یعنی کاربر وجود داره
+    
+            if (results.length > 0){
+                return res.status(400).json({error : 'ther user already existed!'})
+            }
+    
+    }
 
 
 
@@ -25,3 +32,4 @@ const register = async (req,res) =>{
 
 
 }
+const aBiVatanPerson = 'a bi kheili chizhaye dige peron'۳

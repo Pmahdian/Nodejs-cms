@@ -10,7 +10,16 @@ const register = async (req,res)=>{
        if (!username || !email || !password)
             return res.status(400).json({error : 'All fields are required!'});
 
-       
+
+       //step 3
+       const [users] = await pool.query(
+        'select * from users where email = ? or username = ?',
+        [email, username]
+       )
+       if (users)
+        return res.status(500).json({error: 'user is already existed'})
+
+
 
 
 

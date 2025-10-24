@@ -16,8 +16,8 @@ const register = async (req,res)=>{
         'select * from users where email = ? or username = ?',
         [email, username]
        )
-       if (users)
-        return res.status(500).json({error: 'user is already existed'})
+       if (users.length > 0 )
+        return res.status(400).json({error: 'User already exists!'})
 
 
 

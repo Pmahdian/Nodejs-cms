@@ -20,16 +20,37 @@ const register = async (req,res) =>{
             if (results.length > 0){
                 return res.status(400).json({error : 'ther user already existed!'})
             }
+        })
+
+
+            bcrypt.hash(password,10, (err, hashedPassword)=>{
+                if (err)
+                    return res.status(500).json({error : 'there is an error with pasword hashing'});
+
+
+
+
+                pool.query(
+                    'insert into users(username, email, password) values(?, ?, ?)', 
+                    [username, email, hashedPassword],
+                    (error, results) =>{
+                        if (error){
+                            return res.status(500).json({error : 'There is an error with inserting user'});}
+
+                        res.status(201).json({message : 'insesrting was successful', userId : results.userId})    
+                    }
+
+                )
+            })
     
-    }
+    
 
 
 
 
-    )
+    
 
 
 
 
 }
-const aBiVatanPerson = 'a bi kheili chizhaye dige peron'۳

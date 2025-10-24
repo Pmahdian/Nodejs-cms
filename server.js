@@ -9,6 +9,10 @@ app.use(cors());
 app.use(express.json());
 
 
+//Router
+app.use('/api/auth', require('./src/routes/auth'));
+
+
 app.get('/', (req,res)=>{
     res.send('hello...')
 

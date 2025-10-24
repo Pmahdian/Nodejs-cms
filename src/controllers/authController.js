@@ -19,6 +19,8 @@ const register = async (req,res)=>{
        if (users.length > 0 )
         return res.status(400).json({error: 'User already exists!'})
 
+       //step 4 password hashing
+
 
 
 

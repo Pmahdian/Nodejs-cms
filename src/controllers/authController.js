@@ -2,6 +2,8 @@ const bcrypt = require('bcryptjs');
 const pool = require('../config/database');
 const jwt = require('jsonwebtoken');
 
+require('dotenv').config();
+
 const register = async (req,res)=>{
     try {
         //step 1 : get values from request body
@@ -72,6 +74,9 @@ const login = async(req,res)=>{
         const passCompare = await bcrypt.compare(password, foundUser.password);
         if (!passCompare)
             return res.status(401).json({error : 'login faild'})
+
+        // step 6 : create jwt token
+
 
 
 

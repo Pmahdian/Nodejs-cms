@@ -49,6 +49,10 @@ const register = async (req,res)=>{
 
 const login = async(req,res)=>{
     try {
+        //step 1 : get values from body
+        const {usernaem, email, password} = req.body;
+
+        
         
     } catch (error) {
         

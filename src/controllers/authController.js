@@ -30,12 +30,12 @@ const register = async (req,res)=>{
        );
 
        //step 6 : send a Successful response
-
-
-
-
-
-
+       res.status(201).json(
+        {
+            message : 'User created successfylly',
+            userId : result.userId
+        }
+       );
 
         
     } catch (error) {

@@ -19,10 +19,15 @@ const register = async (req,res)=>{
        if (users.length > 0 )
         return res.status(400).json({error: 'User already exists!'})
 
-       //step 4 password hashing
+       //step 4 : password hashing
        const hashedPassword = await bcrypt.hash(password, 10);
 
 
+       //step 5 : insert user in database
+       const result = await pool.query(
+        'insert into users(username, email, password) values(?, ?, ?)',
+        [username, email, hashedPassword]
+       );
 
 
 
@@ -33,7 +38,7 @@ const register = async (req,res)=>{
         
     } catch (error) {
         console.error('Register error', error);
-        res.status(500).json({error : 'Server error'})
+        res.status(500).json({error : 'Server error'});
         
     }
 }

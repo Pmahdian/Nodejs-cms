@@ -76,13 +76,39 @@ const login = async(req,res)=>{
             return res.status(401).json({error : 'login faild'})
 
         // step 6 : create jwt token
+        const token = jwt.sign(
+            {
+                //payload
+                userId : foundUser.id,
+                username : foundUser.username,
+                email : foundUser.email
 
+            },
+            // secret key
+            process.env.JWT_SECRET,
+            //option
+            { expiresIn : '24'}
 
+        );
 
+        //step 7 : send success response
+        res.status(200).json(
+            {
+                message : 'Login successful',
+                token : token,
+                user :{
+                    id : foundUser.id,
+                    username : foundUser.username,
+                    email : foundUser.email
+                }
+            }
+        );
 
 
         
     } catch (error) {
+        console.error('Login error', error);
+        res.status(500).json({error : 'Server error'});
         
     }
 

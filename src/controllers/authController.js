@@ -69,7 +69,7 @@ const login = async(req,res)=>{
         const foundUser = user[0];
 
         // step 5 : compare plain password and hashed password
-        const passCompare = await bcrypt.compare(password, hashedPassword);
+        const passCompare = await bcrypt.compare(password, foundUser.password);
 
 
 

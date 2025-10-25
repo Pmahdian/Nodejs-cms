@@ -7,6 +7,8 @@ const { testAuth } = require('../controllers/testController');
 router.post('/register', register); 
 router.post('/login',login)
 
+router.get('/test-protected', authMiddleware, testAuth)
+
 module.exports = router;
 
 

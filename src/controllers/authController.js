@@ -57,7 +57,7 @@ const login = async(req,res)=>{
             return res.status(400).json({error : 'All fields are required!'})
 
         //step 3 : find user with email
-        const user = await pool.query(
+        const [user] = await pool.query(
             'select * from users where email = ?',
         [email]);
 

@@ -61,7 +61,8 @@ const login = async(req,res)=>{
             'select * from users where email = ?',
         [email]);
 
-        if (!user) return res.status(500).json({error : 'user is not exists!'})
+        if (user.length === 0)
+             return res.status(500).json({error : 'user is not exists!'})
 
 
 

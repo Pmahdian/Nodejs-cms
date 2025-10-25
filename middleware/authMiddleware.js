@@ -16,6 +16,9 @@ const authMiddleware = (req, res, next) => {
         //step 3 : Pure token mining
         const mainToken = token.split(' ')[1];
 
+        //step 4 : verify token with JWT
+        const decoded = jwt.verify(mainToken, process.env.JWT_SECRET);
+
 
         
     } catch (error) {

@@ -70,6 +70,8 @@ const login = async(req,res)=>{
 
         // step 5 : compare plain password and hashed password
         const passCompare = await bcrypt.compare(password, foundUser.password);
+        if (!passCompare)
+            return res.status(401).json({error : 'login faild'})
 
 
 

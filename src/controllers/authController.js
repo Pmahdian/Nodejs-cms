@@ -24,7 +24,7 @@ const register = async (req,res)=>{
 
 
        //step 5 : insert user in database
-       const result = await pool.query(
+       const [result] = await pool.query(
         'insert into users(username, email, password) values(?, ?, ?)',
         [username, email, hashedPassword]
        );

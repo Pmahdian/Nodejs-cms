@@ -65,6 +65,11 @@ const login = async(req,res)=>{
              return res.status(500).json({error : 'user is not exists!'})
 
 
+        //step 4 : find user
+        const foundUser = user[0];
+        
+
+
 
         
     } catch (error) {

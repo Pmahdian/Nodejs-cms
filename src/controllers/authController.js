@@ -50,9 +50,18 @@ const register = async (req,res)=>{
 const login = async(req,res)=>{
     try {
         //step 1 : get values from body
-        const {usernaem, email, password} = req.body;
+        const {username, email, password} = req.body;
+
+        //step 2 : validation values
+        if(!username || !email || !password) 
+            return res.status(400).json({error : 'All fields are required!'})
 
         
+
+
+
+
+
         
     } catch (error) {
         

@@ -8,12 +8,18 @@ const authMiddleware = (req, res, next) => {
 
         //step 2 : Checking the existence of the token
         if(!token)
-            return res.status(401).json({error : 'Token is not found!'})
+            return res.status(401).json(
+        {message : 'Token is not found!',
+              success: false,
+        })
 
-        
+        //step 3 : Pure token mining
+        const mainToken = token.split(' ')[1];
+
+
         
     } catch (error) {
         
-    }
+    } 
 
 }

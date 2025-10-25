@@ -4,7 +4,7 @@ const pool = require('../config/database');
 const register = async (req,res)=>{
     try {
         //step 1 : get values from request body
-       const {username , email, password} = await req.body;
+       const {username , email, password} = req.body;
 
        //step 2 - validation
        if (!username || !email || !password)

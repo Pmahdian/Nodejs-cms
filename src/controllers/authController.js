@@ -87,7 +87,7 @@ const login = async(req,res)=>{
             // secret key
             process.env.JWT_SECRET,
             //option
-            { expiresIn : '24'}
+            { expiresIn : '24h'}
 
         );
 

@@ -64,7 +64,7 @@ const login = async(req,res)=>{
         [email]);
 
         if (user.length === 0)
-             return res.status(500).json({error : 'user is not exists!'})
+             return res.status(404).json({error : 'User not found!'})
 
 
         //step 4 : find user

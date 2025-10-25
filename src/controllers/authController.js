@@ -33,7 +33,7 @@ const register = async (req,res)=>{
        res.status(201).json(
         {
             message : 'User created successfylly',
-            userId : result.userId
+            userId : result.insertId
         }
        );
 

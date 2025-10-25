@@ -11,7 +11,7 @@ const register = async (req,res)=>{
             return res.status(400).json({error : 'All fields are required!'});
 
 
-       //step 3
+       //step 3 : Checking for user existence
        const [users] = await pool.query(
         'select * from users where email = ? or username = ?',
         [email, username]
@@ -28,6 +28,8 @@ const register = async (req,res)=>{
         'insert into users(username, email, password) values(?, ?, ?)',
         [username, email, hashedPassword]
        );
+
+       //step 6 : 
 
 
 

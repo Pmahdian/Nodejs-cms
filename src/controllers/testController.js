@@ -20,6 +20,18 @@ const testAuth = (req, res) => {
 
         
     } catch (error) {
+        //step 3 : error handling
+        console.error('Test auth error:', error);
+        res.status(500).json(
+            {
+                success : false,
+                message : 'Server error'
+            }
+        )
+
         
     }
 }
+
+
+module.exports = { testAuth }; 

@@ -58,7 +58,7 @@ const login = async(req,res)=>{
 
         //step 3 : find user with email
         const user = await pool.query(
-            'select * from useres where email = ?',
+            'select * from users where email = ?',
         [email]);
 
         if (!user) return res.status(500).json({error : 'user is not exists!'})

@@ -29,7 +29,7 @@ const register = async (req,res)=>{
         [username, email, hashedPassword]
        );
 
-       //step 6 : 
+       //step 6 : send a Successful response
 
 
 

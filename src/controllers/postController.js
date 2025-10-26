@@ -22,9 +22,16 @@ const createPost = async (req, res) => {
             [title, content,userId, category_id]
         );
 
-        
+        //step 5 : send success response
+        res.status(201).json(
+            {
+                success : true,
+                message : 'post created successfully!',
+                postId : result.insertId,
+                title : title
+            }
+        )
 
-        
 
 
         

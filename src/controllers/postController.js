@@ -130,5 +130,14 @@ const getMyPosts = async (req, res) => {
 };
 
 
+const getPostById = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+
 
 module.exports = {createPost, getAllPosts, getMyPosts};

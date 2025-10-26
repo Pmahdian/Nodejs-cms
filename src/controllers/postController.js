@@ -1,4 +1,5 @@
 const authMiddleware = require('../middleware/authMiddleware');
+const pool = require('../config/database')
 
 const createPost = async (req, res) => {
     try {
@@ -14,8 +15,16 @@ const createPost = async (req, res) => {
                 success : false,
                 error : 'title and content fields are required!'
             });
+        
+        //step 4 : save post in database
+        const [result] = await pool.query(
+            'insert into posts (title, content, user_id, category_id) values (?, ?, ?, ?)',
+            [title, content,userId, category_id]
+        );
 
-        /
+        
+
+        
 
 
         

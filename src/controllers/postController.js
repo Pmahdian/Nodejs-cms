@@ -51,18 +51,43 @@ const getAllPosts = async (req, res) => {
         //step 1 : get data from database
         const [posts] = await pool.query(
             'SELECT p.id, p.title, p.content, p.created_at, u.username as author, c.name as category_name FROM posts p LEFT JOIN users u ON p.user_id = u.id LEFT JOIN categories c ON p.category_id = c.id ORDER BY p.created_at DESC'
-        )
+        );
+
+        // step 2 : send response to user
+        if (posts.lenth === 0)
+            return res.status(200).json({
+                success : true,
+                message : "There is no posts", 
+                posts : []
+        
+            });
+        res.status(200).json(
+            {
+                success : true,
+                message : "Posts received successfully.",
+                count : posts.length,
+                post : posts
+
+            }
+        );
 
 
 
         
     } catch (error) {
-        
+        //step 3 : Error handling 
+        console.error('Get posts error:', error);
+        res.status(500).json(
+            {
+                success : false,
+                error : 'Server error'
+            }
+        );
     }
 
 
 
-}
+};
 
 
 

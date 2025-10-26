@@ -75,12 +75,19 @@ const getAllPosts = async (req, res) => {
 
         
     } catch (error) {
-        
+        //step 3 : Error handling 
+        console.error('Get posts error:', error);
+        res.status(500).json(
+            {
+                success : false,
+                error : 'Server error'
+            }
+        );
     }
 
 
 
-}
+};
 
 
 

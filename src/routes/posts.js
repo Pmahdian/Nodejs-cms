@@ -7,5 +7,8 @@ const {createPost, getAllPosts} = require('../controllers/postController');
 
 // POST /api/posts + '/' = /api/posts/
 router.post('/', authMiddleware, createPost);
+// Get /api/posts + '/' = /api/posts/
+router.get('/', getAllPosts)
+
 
 module.exports = router;

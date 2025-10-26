@@ -117,11 +117,17 @@ const getMyPosts = async (req, res) => {
 
 
     } catch (error) {
+        //step 4 : Error handling
         console.error('Get post of follwing user error:', error);
-        
+        res.status(500).json(
+            {
+                success : false,
+                error : 'Server error'
+            });
+
         
     }
-}
+};
 
 
 

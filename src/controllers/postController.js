@@ -135,7 +135,23 @@ const getPostById = async (req, res) => {
         //step 1 : get post id from req.params
         const postId = req.params.id;
 
-        //step 2 : get a post with post_id
+        //step 2 : get a post by postId from database
+        const [posts] = await pool.query(
+            `SELECT 
+                p.id,
+                p.title, 
+                p.content,
+                p.created_at,
+                p.updated_at,
+                u.username as author,
+                c.name as category_name
+            FROM posts p
+            LEFT JOIN users u ON p.user_id = u.id
+            LEFT JOIN categories c ON p.category_id = c.id
+            WHERE p.id = ?`,
+            [postId]
+        );
+
         
     } catch (error) {
         

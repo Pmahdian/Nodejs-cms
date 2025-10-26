@@ -12,7 +12,7 @@ app.use(express.json());
 
 //Router
 app.use('/api/auth', authRoutes);
-
+app.use('api/posts', postRoutes);
 
 app.get('/', (req,res)=>{
     res.send('hello...')

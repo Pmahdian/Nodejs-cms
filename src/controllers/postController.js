@@ -6,6 +6,8 @@ const createPost = async (req, res) => {
         const {title, content, category_id} = req.body;
 
         //step 2 : get userId from req.user moddleware
+        const userId = req.user.userId
+        
 
         
     } catch (error) {

@@ -46,4 +46,35 @@ const createPost = async (req, res) => {
     }
 };
 
+const getAllPosts = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = {createPost};

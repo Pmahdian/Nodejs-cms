@@ -131,4 +131,4 @@ const getMyPosts = async (req, res) => {
 
 
 
-module.exports = {createPost, getAllPosts};
+module.exports = {createPost, getAllPosts, getMyPosts};

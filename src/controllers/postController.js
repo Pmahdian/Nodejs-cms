@@ -90,6 +90,14 @@ const getAllPosts = async (req, res) => {
 };
 
 
+const getMyPosts = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
 
 
 module.exports = {createPost, getAllPosts};

@@ -36,6 +36,14 @@ const createPost = async (req, res) => {
 
         
     } catch (error) {
+        //step 6 : error handling
+        console.error('Create post error:', error);
+        res.status(500).json({
+            success : false,
+            error : 'server error'
+        });
         
     }
-}
+};
+
+module.exports = {createPost};

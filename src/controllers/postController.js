@@ -109,7 +109,7 @@ const getMyPosts = async (req, res) => {
         res.status(200).json(
             {
                 success : true,
-                message : "Posts of following user received successfully.",
+                message : "Your posts received successfully.",
                 count : posts.length,
                 posts : posts
             }

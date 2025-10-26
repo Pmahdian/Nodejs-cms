@@ -54,7 +54,7 @@ const getAllPosts = async (req, res) => {
         );
 
         // step 2 : send response to user
-        if (posts.lenth === 0)
+        if (posts.length === 0)
             return res.status(200).json({
                 success : true,
                 message : "There is no posts", 
@@ -66,7 +66,7 @@ const getAllPosts = async (req, res) => {
                 success : true,
                 message : "Posts received successfully.",
                 count : posts.length,
-                post : posts
+                posts : posts
 
             }
         );
@@ -92,21 +92,4 @@ const getAllPosts = async (req, res) => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = {createPost};
+module.exports = {createPost, getAllPosts};

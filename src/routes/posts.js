@@ -5,7 +5,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 const {createPost} = require('../controllers/postController');
 
 
-// POST /api/posts
+// POST /api/posts + '/' = /api/posts/
 router.post('/', authMiddleware, createPost);
 
 module.exports = router;

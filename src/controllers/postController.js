@@ -92,7 +92,8 @@ const getAllPosts = async (req, res) => {
 
 const getMyPosts = async (req, res) => {
     try {
-        
+        //step 1 : get userId from req.user moddleware
+        const userId = req.user.userId
     } catch (error) {
         
     }

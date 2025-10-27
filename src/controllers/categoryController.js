@@ -208,4 +208,4 @@ const deleteCategory = async (req, res) => {
     }
 }
 
-module.exports = {getAllCategories, createCategory, updateCategory}
+module.exports = {getAllCategories, createCategory, updateCategory, deleteCategory}

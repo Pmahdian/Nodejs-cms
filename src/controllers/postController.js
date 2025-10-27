@@ -267,9 +267,12 @@ const deletePost = async (req, res) => {
                     success : false,
                     message : "post not found or you haven't access!"
                 }
-            )
+            );
             
         }
+
+        //step 4 : delete post
+        await pool.query('delete from posts where id = ?', [postId])
 
 
 

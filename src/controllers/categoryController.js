@@ -36,6 +36,14 @@ const getAllCategories = async (req, res) => {
         });
         
     }
+};
+
+const creatCategory = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
 }
 
 module.exports = {getAllCategories}

@@ -222,6 +222,16 @@ const updatePost = async (req, res) => {
             [title, content, category_id, postId]
         );
 
+
+        //step 7 : senf response
+        res.status(200).json(
+            {
+                success : true,
+                message : "post updated successfully.",
+                postId : postId
+            }
+        );
+
         
 
 

@@ -162,6 +162,9 @@ const updateCategory = async (req, res) => {
 
 const deleteCategory = async (req, res) => {
     try {
+        //step 1 : get categoryId from req.params
+        const categoryId = req.params.categoryId;
+        
         
     } catch (error) {
         

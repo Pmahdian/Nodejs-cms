@@ -97,4 +97,13 @@ const createCategory = async (req, res) => {
     }
 }
 
+
+const updateCategory = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
 module.exports = {getAllCategories, createCategory}

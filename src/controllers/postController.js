@@ -247,4 +247,4 @@ const updatePost = async (req, res) => {
     }
 }
 
-module.exports = {createPost, getAllPosts, getMyPosts, getPostById};
+module.exports = {createPost, getAllPosts, getMyPosts, getPostById, updatePost};

@@ -6,13 +6,13 @@ const getProfile = async (req, res) => {
         const userId = req.user.userId;
 
         //step 2 : find user in databse without password
-        const result = await pool.query(
+        const [user] = await pool.query(
             'select username, email from users where id = ?',
             [userId]
         );
 
     
-        if (result === 0){
+        if (user.length === 0){
             return res.status(404).json(
                 {
                     success : false,
@@ -21,8 +21,17 @@ const getProfile = async (req, res) => {
             )
 
         }
+        //step 3 : send user information
+        res.status(200).json(
+            {
+                success : true,
+                user : user[0]
+            }
+        )
+
         
     } catch (error) {
+        
         
     }
 }

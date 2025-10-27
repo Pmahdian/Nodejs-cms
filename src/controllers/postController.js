@@ -185,6 +185,11 @@ const getPostById = async (req, res) => {
 
 const updatePost = async (req, res) => {
     try {
+        // step 1 : get the post by id from params
+        const postId = req.params.id;
+
+
+        
         
     } catch (error) {
         

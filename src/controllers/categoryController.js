@@ -105,7 +105,18 @@ const updateCategory = async (req, res) => {
 
         //step 2 : get data from body
         const {name, description} = req.body;
-        
+
+        //step 3 : validation
+        if (!name && !description){
+            return res.status(400).json(
+                {
+                    success : false,
+                    message : 'you have to fill at least a field'
+                }
+            );
+        }
+
+
 
         
     } catch (error) {

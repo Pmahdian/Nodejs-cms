@@ -287,6 +287,14 @@ const deletePost = async (req, res) => {
 
         
     } catch (error) {
+        //step 6 : Error handling
+        console.error("Delete post error:", error);
+        res.status(500).json(
+            {
+                success : false,
+                message : 'Server error'
+            }
+        )
         
     }
 

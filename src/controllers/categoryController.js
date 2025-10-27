@@ -38,7 +38,7 @@ const getAllCategories = async (req, res) => {
     }
 };
 
-const creatCategory = async (req, res) => {
+const createCategory = async (req, res) => {
     try {
         // step 1 : get data from body
         const {name, description} = req.body;
@@ -97,4 +97,4 @@ const creatCategory = async (req, res) => {
     }
 }
 
-module.exports = {getAllCategories, creatCategory}
+module.exports = {getAllCategories, createCategory}

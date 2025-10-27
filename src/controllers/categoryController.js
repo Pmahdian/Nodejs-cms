@@ -135,14 +135,19 @@ const updateCategory = async (req, res) => {
             'update categories set name = ?, description = ?  WHERE id = ?',
             [name, description, categoryId]
         );
-        
 
-
-
-
-
+        //step 6 : send response 
+        res.status(200).json(
+            {
+                success : true,
+                message : 'Category updated successfully.',
+                name : name
+            }
+        )
+    
         
     } catch (error) {
+        console.
         
     }
 }

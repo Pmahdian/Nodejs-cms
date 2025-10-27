@@ -300,4 +300,4 @@ const deletePost = async (req, res) => {
 
 }
 
-module.exports = {createPost, getAllPosts, getMyPosts, getPostById, updatePost};
+module.exports = {createPost, getAllPosts, getMyPosts, getPostById, updatePost, deletePost};

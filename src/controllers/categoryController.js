@@ -1,11 +1,29 @@
 const pool = require('../config/database');
 
-const getAllCatgories = async (req, res) => {
+const getAllCategories = async (req, res) => {
     try {
         //step 1 : get all categories from database
         const [categories] = await pool.query(
             'select * from categories order by name ASC'
         );
+
+        //step 2 : send response 
+        if (categories.length === 0){
+            return res.status(200).json({
+                success : true,
+                message : 'there is no category',
+                categories: []  
+
+            })
+        }
+        res.status(200).json(
+            {
+                success : true,
+                message : 'this is categories',
+                count : categories.length,
+                categories : categories
+            }
+        )
 
         
         

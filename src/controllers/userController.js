@@ -78,6 +78,11 @@ const updateProfile = async (req, res) => {
 
         //step 5 : update user in database
 
+        await pool.query(
+            'update users set username = ?, email = ? where id = ?',
+            [username, email, userId]
+        )
+
 
 
         

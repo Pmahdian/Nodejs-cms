@@ -191,6 +191,10 @@ const updatePost = async (req, res) => {
         //step 2 : get data from request body
         const {title, content, category_id} = req.body;
 
+        //step 3 : get user id from req.user middleware
+        const userId = req.user.userId;
+        
+
         
 
 

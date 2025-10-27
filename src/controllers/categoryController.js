@@ -83,10 +83,16 @@ const creatCategory = async (req, res) => {
             }
         );
 
-
-        
         
     } catch (error) {
+        //strp 6 : Error handling
+        console.error("Create category error:", error);
+        res.status(500).json(
+            {
+                success : false,
+                message : 'server error'
+            }
+        );
         
     }
 }

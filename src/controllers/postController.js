@@ -183,6 +183,12 @@ const getPostById = async (req, res) => {
     }
 }
 
-
+const updatePost = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
 
 module.exports = {createPost, getAllPosts, getMyPosts, getPostById};

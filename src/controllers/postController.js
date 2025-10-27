@@ -151,6 +151,16 @@ const getPostById = async (req, res) => {
             [postId]
         );
 
+        //step 3 : 404 status res if there wasn't any posts
+        if (posts.length === 0) 
+            return res.status(404).json(
+        {
+            success : false,
+            message : "post not found!"
+        });
+
+
+
         
     } catch (error) {
         

@@ -274,6 +274,15 @@ const deletePost = async (req, res) => {
         //step 4 : delete post
         await pool.query('delete from posts where id = ?', [postId])
 
+        //step 5 : send response 
+        res.status(200).json(
+            {
+                success : true,
+                message : "post deleted successfully.",
+                postId : postId
+            }
+        );
+
 
 
         

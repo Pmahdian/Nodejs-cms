@@ -1,3 +1,4 @@
+const { useId } = require('react');
 const pool = require('../config/database')
 
 const createPost = async (req, res) => {
@@ -203,6 +204,18 @@ const updatePost = async (req, res) => {
             message : 'at least one field is required!'
         });
     }
+        //step 5 : check for user and id existing
+        const [existingPosts] = await pool.query('select * from posts where id = ? and user_id = ?', 
+            [postId, userId]
+        );
+        if (existingPosts.length === 0) {
+            return res.status(404).json(
+                {
+                    success : false,
+                    message : "post not found or you haven't access"
+                }
+            )
+        };
 
         
 

@@ -254,6 +254,9 @@ const deletePost = async (req, res) => {
         const postId = req.params.id;
 
         //step 2 : get user id from req.user middleware
+        const userId = req.user.userId;
+
+        
         
     } catch (error) {
         

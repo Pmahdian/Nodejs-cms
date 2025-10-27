@@ -132,7 +132,7 @@ const updateCategory = async (req, res) => {
 
         //step 5 : update category
         const [result] = await pool.query(
-            'update categories set name = ?, description = ?',
+            'update categories set name = ?, description = ?  WHERE id = ?',
             [name, description]
         );
         

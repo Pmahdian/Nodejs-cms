@@ -43,4 +43,12 @@ const getProfile = async (req, res) => {
     }
 }
 
+const updateProfile = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
 module.exports = {getProfile};

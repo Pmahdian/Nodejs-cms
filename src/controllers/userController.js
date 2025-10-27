@@ -83,10 +83,19 @@ const updateProfile = async (req, res) => {
             [username, email, userId]
         )
 
+        //step 6 : send response
+        res.status(200).json(
+            {
+                success : true,
+                message : "User updated successfully."
+            }
+        )
+
 
 
         
     } catch (error) {
+        
         
     }
 }

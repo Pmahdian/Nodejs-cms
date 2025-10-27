@@ -97,4 +97,4 @@ const creatCategory = async (req, res) => {
     }
 }
 
-module.exports = {getAllCategories}
+module.exports = {getAllCategories, creatCategory}

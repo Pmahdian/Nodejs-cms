@@ -232,11 +232,17 @@ const updatePost = async (req, res) => {
             }
         );
 
-        
-
-
+    
         
     } catch (error) {
+        //step 8 : Error handling
+        console.error('Update post error', error);
+        res.status(500).json(
+            {
+                success : false,
+                message : "Server error"
+            }
+        )
         
     }
 }

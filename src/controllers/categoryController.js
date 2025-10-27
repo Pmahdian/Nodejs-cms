@@ -182,6 +182,15 @@ const deleteCategory = async (req, res) => {
         await pool.query(
             'delete from categories where id = ?', [categoryId]
         );
+
+        // step 4 : send response
+        res.status(201).json(
+            {
+                success : true,
+                message : 'Category deleted successfully.',
+                categoryId : categoryId
+            }
+        )
         
     
 

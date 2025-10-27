@@ -159,7 +159,14 @@ const getPostById = async (req, res) => {
             message : "post not found!"
         });
 
-
+        //step 4 : send post
+        res.status(200).json(
+            {
+                success : true,
+                message : "this is the post that you looking for",
+                post : posts[0]
+            }
+        );
 
         
     } catch (error) {

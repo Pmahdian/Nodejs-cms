@@ -121,7 +121,7 @@ const updateCategory = async (req, res) => {
             'select id from categories where name = ? and id != ?',
             [name, categoryId]
         );
-        if (existingCategories > 0){
+        if (existingCategories.length > 0){
             return res.status(400).json(
                 {
                     success : false,

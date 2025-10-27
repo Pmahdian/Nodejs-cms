@@ -170,7 +170,7 @@ const deleteCategory = async (req, res) => {
             'select * from categories where id = ?',
             [categoryId]
         );
-        if (existingCategory.length > 0){
+        if (existingCategory.length === 0){
             return res.status(404).json(
                 {
                     success : false,

@@ -164,7 +164,21 @@ const deleteCategory = async (req, res) => {
     try {
         //step 1 : get categoryId from req.params
         const categoryId = req.params.categoryId;
-        
+
+        //step 2 : checking for category existing
+        const [existingCategory] = await pool.query(
+            'select * from categories where id = ?',
+            [categoryId]
+        );
+        if (existingCategory.length > 0){
+            return res.status(404).json(
+                {
+                    success : false,
+                    message : 'Category not found'
+                }
+            )
+        }
+
         
     } catch (error) {
         

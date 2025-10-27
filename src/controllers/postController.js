@@ -193,10 +193,18 @@ const updatePost = async (req, res) => {
 
         //step 3 : get user id from req.user middleware
         const userId = req.user.userId;
-        
+
+
+        //step 4 : validation
+        if (!title && !content && !category_id){
+            return res.status(400).json(
+        {
+            success : false,
+            message : 'at least one field is required!'
+        });
+    }
 
         
-
 
 
         

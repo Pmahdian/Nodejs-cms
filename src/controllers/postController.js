@@ -188,8 +188,13 @@ const updatePost = async (req, res) => {
         // step 1 : get the post by id from params
         const postId = req.params.id;
 
+        //step 2 : get data from request body
+        const {title, content, category_id} = req.body;
 
         
+
+
+
         
     } catch (error) {
         

@@ -214,8 +214,13 @@ const updatePost = async (req, res) => {
                     success : false,
                     message : "post not found or you haven't access"
                 }
-            )
+            );
         };
+
+        //stpe 6 : update post
+        const [result] = await pool.query(' update posts set title = ?, content = ?, category_id = ?, updated_at = CURRENT_TIMESTAMP where id = ?',
+            [title, content, category_id, postId]
+        );
 
         
 

@@ -160,4 +160,12 @@ const updateCategory = async (req, res) => {
     }
 }
 
+const deleteCategory = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
 module.exports = {getAllCategories, createCategory, updateCategory}

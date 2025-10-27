@@ -121,6 +121,18 @@ const updateCategory = async (req, res) => {
             'select id from categories where name = ? and id != ?',
             [name, categoryId]
         );
+        if (existingCategories > 0){
+            return res.status(400).json(
+                {
+                    success : false,
+                    message : 'Category name already exists!'
+                }
+            )
+        }
+
+        //step 5 : update category
+        
+
 
 
 

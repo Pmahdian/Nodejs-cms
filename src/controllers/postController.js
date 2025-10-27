@@ -250,6 +250,10 @@ const updatePost = async (req, res) => {
 
 const deletePost = async (req, res) => {
     try {
+        //step 1 : get post id by req.params
+        const postId = req.params.id;
+
+        //step 2 : get user id from req.user middleware
         
     } catch (error) {
         

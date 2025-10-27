@@ -53,6 +53,20 @@ const creatCategory = async (req, res) => {
             );
         }
 
+        //step 3 : Cheking for duplicated names
+        const [existingCategories] = await pool.query(
+            'select id from categories where name = ?',
+            [name]
+        );
+        if (existingCategories.length > 0){
+            return res.status(400).json(
+                {
+                    success : false,
+                    message : 'Category name already exists!'
+                }
+            );
+        }
+
 
         
         

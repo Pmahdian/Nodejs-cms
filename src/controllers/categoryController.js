@@ -178,6 +178,10 @@ const deleteCategory = async (req, res) => {
                 }
             )
         }
+        // step 3 : delete from database
+        await pool.query(
+            'delete from categories where id = ?', [categoryId]
+        );
         
     
 

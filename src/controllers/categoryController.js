@@ -103,7 +103,9 @@ const updateCategory = async (req, res) => {
         //step 1 : get categoryId from params
         const categoryId = req.params.categoryId;
 
-        //step 
+        //step 2 : get data from body
+        const {name, description} = req.body;
+        
 
         
     } catch (error) {

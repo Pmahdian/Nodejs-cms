@@ -95,7 +95,14 @@ const updateProfile = async (req, res) => {
 
         
     } catch (error) {
-        
+        // step 7 : Error handling
+        console.error('Update user error;', error);
+        res.status(500).json(
+            {
+                success : false,
+                message : "server error"
+            }
+        )
         
     }
 }

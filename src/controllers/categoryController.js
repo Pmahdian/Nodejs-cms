@@ -42,6 +42,18 @@ const creatCategory = async (req, res) => {
     try {
         // step 1 : get data from body
         const {name, description} = req.body;
+
+        //step 2 : validation
+        if (!name){
+            return res.status(400).json(
+                {
+                    success : false,
+                    message : 'Category name is required'
+                }
+            );
+        }
+
+
         
         
     } catch (error) {

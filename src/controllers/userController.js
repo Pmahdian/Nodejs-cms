@@ -48,6 +48,9 @@ const updateProfile = async (req, res) => {
         //step 1 : get userId from req.user middleware
         const userId = req.user.userId;
 
+        //step 2 : get data from req.body
+        const {username ,email} = req.body;
+
         
     } catch (error) {
         

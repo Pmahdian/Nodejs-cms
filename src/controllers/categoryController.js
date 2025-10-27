@@ -196,6 +196,14 @@ const deleteCategory = async (req, res) => {
 
         
     } catch (error) {
+        //step 5 : Error handling
+        console.error('Delete category error:', error);
+        res.status(500).json(
+            {
+                success : false,
+                message : 'Server error'
+            }
+        )
         
     }
 }

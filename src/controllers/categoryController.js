@@ -147,7 +147,15 @@ const updateCategory = async (req, res) => {
     
         
     } catch (error) {
-        console.
+        //step 7 : Error handling
+        console.error('Update category error:', error);
+        res.status(500).json(
+            {
+                success : false,
+                message : 'server error'
+            }
+        );
+
         
     }
 }

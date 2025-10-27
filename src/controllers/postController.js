@@ -1,4 +1,3 @@
-const authMiddleware = require('../middleware/authMiddleware');
 const pool = require('../config/database')
 
 const createPost = async (req, res) => {

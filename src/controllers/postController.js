@@ -204,7 +204,7 @@ const updatePost = async (req, res) => {
             message : 'at least one field is required!'
         });
     }
-        //step 5 : check for user and id existing
+        //step 5 : check for user and post id existing
         const [existingPosts] = await pool.query('select * from posts where id = ? and user_id = ?', 
             [postId, userId]
         );
@@ -256,7 +256,23 @@ const deletePost = async (req, res) => {
         //step 2 : get user id from req.user middleware
         const userId = req.user.userId;
 
-        
+        //step 3 : check for user and post id existing
+        const [existingPosts] = await pool.query(
+            'select * from posts where id = ? and user_id = ?',
+            [postId, userId]
+        );
+        if (existingPosts.length === 0){
+            res.status(404).json(
+                {
+                    success : false,
+                    message : "post not found or you haven't access!"
+                }
+            )
+            
+        }
+
+
+
         
     } catch (error) {
         

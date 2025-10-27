@@ -178,6 +178,8 @@ const deleteCategory = async (req, res) => {
                 }
             )
         }
+        
+    
 
         
     } catch (error) {

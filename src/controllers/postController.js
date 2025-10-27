@@ -170,10 +170,19 @@ const getPostById = async (req, res) => {
 
         
     } catch (error) {
+        //step 5 : Error handling
+        console.error('Get post error:', error);
+        res.status(500).json(
+            {
+                success : false,
+                message : "Server error"
+            }
+        )
+
         
     }
 }
 
 
 
-module.exports = {createPost, getAllPosts, getMyPosts};
+module.exports = {createPost, getAllPosts, getMyPosts, getPostById};

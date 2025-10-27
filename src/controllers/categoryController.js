@@ -160,4 +160,4 @@ const updateCategory = async (req, res) => {
     }
 }
 
-module.exports = {getAllCategories, createCategory}
+module.exports = {getAllCategories, createCategory, updateCategory}

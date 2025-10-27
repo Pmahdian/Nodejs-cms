@@ -73,6 +73,16 @@ const creatCategory = async (req, res) => {
             [name, description || null]
         );
 
+        //step 5 : send success response
+        res.status(201).json(
+            {
+                success : true,
+                message : 'Category created successfully.',
+                categoryId : result.insertId,
+                name : name
+            }
+        );
+
 
         
         

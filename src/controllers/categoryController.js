@@ -40,6 +40,9 @@ const getAllCategories = async (req, res) => {
 
 const creatCategory = async (req, res) => {
     try {
+        // step 1 : get data from body
+        const {name, description} = req.body;
+        
         
     } catch (error) {
         

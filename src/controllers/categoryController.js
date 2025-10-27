@@ -67,6 +67,12 @@ const creatCategory = async (req, res) => {
             );
         }
 
+        //step 4 : insert into database
+        const [result] = await pool.query(
+            'insert into categories (name, description) values (?, ?)',
+            [name, description || null]
+        );
+
 
         
         

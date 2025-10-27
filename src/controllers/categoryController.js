@@ -116,6 +116,13 @@ const updateCategory = async (req, res) => {
             );
         }
 
+        //step 4 : Cheking for duplicated names
+        const [existingCategories] = await pool.query(
+            'select id from categories where name = ? and id != ?',
+            [name, categoryId]
+        );
+
+
 
 
         

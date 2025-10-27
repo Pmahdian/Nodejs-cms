@@ -100,6 +100,11 @@ const createCategory = async (req, res) => {
 
 const updateCategory = async (req, res) => {
     try {
+        //step 1 : get categoryId from params
+        const categoryId = req.params.categoryId;
+
+        //step 
+
         
     } catch (error) {
         

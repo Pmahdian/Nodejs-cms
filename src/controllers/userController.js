@@ -31,7 +31,14 @@ const getProfile = async (req, res) => {
 
         
     } catch (error) {
-        
+        //step 4 : Error handling
+        console.error(' Get profile error:', error);
+        res.status(500).json(
+            {
+                success : false,
+                message : "Server error"
+            }
+        )
         
     }
 }

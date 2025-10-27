@@ -6,13 +6,13 @@ const getProfile = async (req, res) => {
         const userId = req.user.userId;
 
         //step 2 : find user in databse without password
-        const [user] = await pool.query(
+        const [users] = await pool.query(
             'select username, email from users where id = ?',
             [userId]
         );
 
     
-        if (user.length === 0){
+        if (users.length === 0){
             return res.status(404).json(
                 {
                     success : false,
@@ -25,7 +25,7 @@ const getProfile = async (req, res) => {
         res.status(200).json(
             {
                 success : true,
-                user : user[0]
+                user : users[0]
             }
         )
 
@@ -50,6 +50,17 @@ const updateProfile = async (req, res) => {
 
         //step 2 : get data from req.body
         const {username ,email} = req.body;
+
+        //step 3 : validation
+        if (!username || !email) {
+            return res.status(400).json(
+                {
+                    success : false,
+                    message : 'At least one filed is required'
+                }
+            )
+        }
+
 
         
     } catch (error) {

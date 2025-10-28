@@ -109,6 +109,11 @@ src/
 ## 🤝 Contributing
 Feel free to fork this project and submit pull requests for any improvements.
 
+## ✉️ Contact Developer
+- Parnian Mahdian
+- [Email](mahdianparnian@yahoo.com)
+- [GitHub Profile](https://github.com/Pmahdian)
+
 ## 📄 License
 This project is open source and available under the [MIT License](LICENSE).
 

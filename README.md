@@ -1,4 +1,4 @@
-![Nodejs cms Banner](cmsBanner.png)
+![Nodejs cms Banner](cms-Banner.png)
 
 
 # 📝 Node.js CMS - Content Management System

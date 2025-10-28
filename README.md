@@ -85,6 +85,83 @@ CREATE DATABASE cms_database;
 npm start
 ```
 
+
+## 📁 Project Structure
+
+```
+Nodejs-cms/
+│
+├── 📁 src/
+│   ├── 📁 config/
+│   │   └── database.js              # MySQL database configuration
+│   │
+│   ├── 📁 controllers/
+│   │   ├── authController.js        # Authentication logic (register/login)
+│   │   ├── postController.js        # Posts CRUD operations
+│   │   ├── categoryController.js    # Categories management
+│   │   └── userController.js        # User profile management
+│   │
+│   ├── 📁 middleware/
+│   │   └── authMiddleware.js        # JWT authentication middleware
+│   │
+│   ├── 📁 routes/
+│   │   ├── auth.js                  # /api/auth/* routes
+│   │   ├── posts.js                 # /api/posts/* routes
+│   │   ├── categories.js            # /api/categories/* routes
+│   │   └── users.js                 # /api/users/* routes
+│   │
+│   └── server.js                    # Main server file
+│
+├── 📄 .env                          # Environment variables (sensitive)
+├── 📄 .env.example                  # Environment variables template
+├── 📄 .gitignore                    # Git ignored files
+├── 📄 package.json                  # Project dependencies
+├── 📄 README.md                     # Project documentation
+└── 📄 LICENSE                       # Project license
+```
+
+## 🗃️ Database Schema
+
+```
+📊 cms_database/
+├── 👥 users table
+│   ├── id (PRIMARY KEY)
+│   ├── username
+│   ├── email
+│   ├── password (hashed)
+│   └── created_at
+│
+├── 📝 posts table
+│   ├── id (PRIMARY KEY)
+│   ├── title
+│   ├── content
+│   ├── user_id (FOREIGN KEY → users.id)
+│   ├── category_id (FOREIGN KEY → categories.id)
+│   ├── created_at
+│   └── updated_at
+│
+└── 🗂️ categories table
+    ├── id (PRIMARY KEY)
+    ├── name
+    ├── description
+    └── created_at
+```
+
+## 🔗 Dependencies
+
+```json
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5", 
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5"
+  }
+}
+```
+
 ## 🔧 Configuration
 
 Create a `.env` file with the following variables:
@@ -95,17 +172,6 @@ DB_PASS=your_password
 DB_NAME=cms_database
 JWT_SECRET=your_jwt_secret
 APP_PORT=3000
-```
-
-## 📁 Project Structure
-```
-src/
-├── config/          # Database configuration
-├── controllers/     # Route controllers
-├── middleware/      # Custom middleware
-├── models/          # Database models
-├── routes/          # API routes
-└── server.js        # Application entry point
 ```
 
 ## 🤝 Contributing

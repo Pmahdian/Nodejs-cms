@@ -3,6 +3,8 @@
 
 A full-featured Content Management System built with Node.js, Express, and MySQL. This project demonstrates RESTful API development with authentication, authorization, and CRUD operations.
 
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 ## ✨ Features
 
 - **🔐 Authentication & Authorization**

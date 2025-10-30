@@ -1,5 +1,5 @@
 const { Category } = require('../models/associations');
-const { Op } = require('sequelize');
+const { Op, where } = require('sequelize');
 
 const getAllCategories = async (req, res) => {
     try {
@@ -158,6 +158,21 @@ const updateCategory = async (req, res) => {
         const updateDate = {};
         if (name) {updateDate.name = name};
         if (description) { updateDate.description = description};
+
+        const [affectedRows] = await Category.update(updateDate,
+            {
+                where :
+                {
+                    id : id
+                }
+            });
+
+        if (affectedRows === 0) {
+            return res.status(404).json({
+                success : false,
+                message : 'Category not found!'
+            })
+        }
 
         //step 6 : send response 
         res.status(200).json(

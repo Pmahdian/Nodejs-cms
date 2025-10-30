@@ -1,4 +1,5 @@
 const { Category } = require('../models/associations');
+const { Op } = require('sequelize');
 
 const getAllCategories = async (req, res) => {
     try {
@@ -130,10 +131,13 @@ const updateCategory = async (req, res) => {
         }
 
         //step 4 : Cheking for duplicated names
-        const [existingCategories] = await pool.query(
-            'select id from categories where name = ? and id != ?',
-            [name, categoryId]
-        );
+        const existingCategory = await Category.findOne(
+            {
+                where : {
+
+                }
+            }
+        )
         if (existingCategories.length > 0){
             return res.status(400).json(
                 {

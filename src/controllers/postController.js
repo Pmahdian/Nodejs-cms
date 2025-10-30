@@ -194,7 +194,20 @@ const getPostById = async (req, res) => {
         const post = await Post.findOne({
             where : {
                 id : postId
-            }
+            },
+            include : [
+                {
+                    model : User,
+                    attributes : ['id', 'username', 'email'],
+                    as : 'User'
+                },
+                {
+                    model : Category,
+                    attributes : ['id', 'name', 'description'],
+                    as : 'Category'
+                }
+            ],
+            attributes : ['id', 'title', 'content', 'created_at', 'user_id', 'category_id']
         });
 
         //step 3 : 404 status res if there wasn't any posts

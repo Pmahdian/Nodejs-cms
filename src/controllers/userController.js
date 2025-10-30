@@ -1,4 +1,5 @@
-const pool = require('../config/database');
+const User = require('../models/User');
+const { Op } = require('sequelize');
 
 const getProfile = async (req, res) => {
     try {

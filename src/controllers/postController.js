@@ -111,7 +111,29 @@ const getMyPosts = async (req, res) => {
         const userId = req.user.userId
 
         //step 2 : get posts of the user from database
-        const [posts] = await pool.query('SELECT p.id, p.title, p.content, p.created_at, u.username as author, c.name as category_name FROM posts p LEFT JOIN users u ON p.user_id = u.id LEFT JOIN categories c ON p.category_id = c.id WHERE p.user_id = ? ORDER BY p.created_at DESC', [userId]);
+        // const [posts] = await pool.query('SELECT p.id, p.title, p.content, p.created_at, u.username as author, c.name as category_name FROM posts p LEFT JOIN users u ON p.user_id = u.id LEFT JOIN categories c ON p.category_id = c.id WHERE p.user_id = ? ORDER BY p.created_at DESC', [userId]);
+
+        //step 2 : get posts of the user from database with sequelize
+        const posts = await Post.findAll({
+            where : {
+                user_id : userId
+            },
+            include : [
+                {
+                    model : User,
+                    attributes : ['id', 'username', 'email'],
+                    as : 'User'
+                },
+                {
+                    model : Category,
+                    attributes : ['id', 'name', 'description'],
+                    as : 'Category'
+                }
+            ],
+            order : [['created_at', 'DESC']],
+            attributes : ['id', 'title', 'content','created_at', 'user_id', 'category_id']
+        
+        });
 
         //step 3 : send response
         if (posts.length === 0) 

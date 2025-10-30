@@ -23,12 +23,12 @@ const createPost = async (req, res) => {
             category_id : category_id || null
         });
 
-        //step 5 : send success response
+        //step 5 : send success response with sequelize
         res.status(201).json(
             {
                 success : true,
                 message : 'post created successfully!',
-                postId : result.insertId,
+                postId : post.id,
                 title : title
             }
         )

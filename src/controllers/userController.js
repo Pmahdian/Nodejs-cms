@@ -58,6 +58,9 @@ const updateProfile = async (req, res) => {
                 }
             )
         }
+
+
+        //-----------------------------------------refactoring in proccess.....
         // step 4 : check for duplicate username and email
         const [result] = await pool.query(
             'select id from users where (username = ? or email = ?) and id != ?',

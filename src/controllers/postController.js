@@ -1,4 +1,4 @@
-const { Post } = require('../models/associations');
+const { Post, User, Category } = require('../models/associations');
 
 const createPost = async (req, res) => {
     try {

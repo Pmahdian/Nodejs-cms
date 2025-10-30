@@ -205,9 +205,8 @@ const deleteCategory = async (req, res) => {
         const { id } = req.params;
 
         //step 2 : checking for category existing
-        const existingCategory = await Category.findOne({
-            where: {id : id}
-        });
+        const existingCategory = await Category.findByPk(id);
+        
         if (!existingCategory){
             return res.status(404).json(
                 {

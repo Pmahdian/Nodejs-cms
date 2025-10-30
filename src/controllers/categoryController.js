@@ -1,4 +1,4 @@
-
+const { Category } = require('../models/associations');
 
 const getAllCategories = async (req, res) => {
     try {

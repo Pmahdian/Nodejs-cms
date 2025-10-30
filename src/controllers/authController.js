@@ -67,20 +67,20 @@ const login = async(req,res)=>{
             return res.status(400).json({error : 'All fields are required!'})
 
         //step 3 : find user with email with sequelize (refactoring)
-        const user = await User.findOne(
+        const foundUser = await User.findOne(
             {
                 where :{
                     email : email
                 }
             }
-        )
+        );
+        if (user)
 
         if (user.length === 0)
              return res.status(404).json({error : 'User not found!'})
 
 
-        //step 4 : find user
-        const foundUser = user[0];
+ 
 
         // step 5 : compare plain password and hashed password
         const passCompare = await bcrypt.compare(password, foundUser.password);

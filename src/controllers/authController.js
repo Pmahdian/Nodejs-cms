@@ -14,7 +14,7 @@ const register = async (req,res)=>{
             return res.status(400).json({error : 'All fields are required!'});
 
 
-       //step 3 : Checking for user existence with Sequelize 
+       //step 3 : Checking for user existence with Sequelize (refactor with sequelize)
        const existingUser = await User.findOne({
         where : {
             $or :[

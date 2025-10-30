@@ -10,7 +10,7 @@ const User = sequelize.define('User', {
     },
     // define email field         // ✅ 
     email: {
-        type: DataTypes.STRING,  // ✅ تصحیح: DataTypes  
+        type: DataTypes.STRING,  // ✅ 
         allowNull: false,
         unique: true             // ✅ 
     },

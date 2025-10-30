@@ -1,4 +1,4 @@
-const pool = require('../config/database');
+
 
 const getAllCategories = async (req, res) => {
     try {

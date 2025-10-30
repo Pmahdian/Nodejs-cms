@@ -1,4 +1,4 @@
-const { sequelize } = require("./src/config/sequelize");
+const { sequelize } = require("./config/sequelize");
 const User = require('./models/User');
 
 async function testModel() {

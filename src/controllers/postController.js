@@ -173,24 +173,32 @@ const getPostById = async (req, res) => {
         const postId = req.params.id;
 
         //step 2 : get a post by postId from database
-        const [posts] = await pool.query(
-            `SELECT 
-                p.id,
-                p.title, 
-                p.content,
-                p.created_at,
-                p.updated_at,
-                u.username as author,
-                c.name as category_name
-            FROM posts p
-            LEFT JOIN users u ON p.user_id = u.id
-            LEFT JOIN categories c ON p.category_id = c.id
-            WHERE p.id = ?`,
-            [postId]
-        );
+        // const [posts] = await pool.query(
+        //     `SELECT 
+        //         p.id,
+        //         p.title, 
+        //         p.content,
+        //         p.created_at,
+        //         p.updated_at,
+        //         u.username as author,
+        //         c.name as category_name
+        //     FROM posts p
+        //     LEFT JOIN users u ON p.user_id = u.id
+        //     LEFT JOIN categories c ON p.category_id = c.id
+        //     WHERE p.id = ?`,
+        //     [postId]
+        // );
+
+
+        //step 2 : get a post by id from database with sequelize
+        const post = await Post.findOne({
+            where : {
+                id : postId
+            }
+        });
 
         //step 3 : 404 status res if there wasn't any posts
-        if (posts.length === 0) 
+        if (post.length === 0) 
             return res.status(404).json(
         {
             success : false,
@@ -202,7 +210,7 @@ const getPostById = async (req, res) => {
             {
                 success : true,
                 message : "this is the post that you looking for",
-                post : posts[0]
+                post : post
             }
         );
 

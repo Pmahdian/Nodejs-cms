@@ -130,23 +130,24 @@ const updateCategory = async (req, res) => {
             );
         }
 
-        //step 4 : Cheking for duplicated names
-        const existingCategory = await Category.findOne(
-            {
+        //step 4 : Cheking for duplicated names with sequelize
+        if (name) {
+            const existingCategory = await Category.findOne({
                 where : {
-
+                    name : name,
+                    id : {[Op.ne] : id} //Op.ne = Not Equal
                 }
+            });
+            if (existingCategory){
+                return res.status(400).json(
+                    {
+                        success : false,
+                        message : "Category name aleardy exists!"
+                    }
+                );
             }
-        )
-        if (existingCategories.length > 0){
-            return res.status(400).json(
-                {
-                    success : false,
-                    message : 'Category name already exists!'
-                }
-            )
         }
-
+        
         //step 5 : update category
         const [result] = await pool.query(
             'update categories set name = ?, description = ?  WHERE id = ?',

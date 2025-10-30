@@ -87,11 +87,7 @@ const getAllPosts = async (req, res) => {
                 count : posts.length,
                 posts : posts
 
-            }
-        );
-
-
-
+            });
         
     } catch (error) {
         //step 3 : Error handling 

@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "root",
+    "password": "20042004",
+    "database": "cms_database",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "20042004", 
+    "database": "cms_database_test",
+    "host": "localhost",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "20042004",
+    "database": "cms_database_prod",
+    "host": "localhost",
+    "dialect": "mysql"
+  }
+}
+

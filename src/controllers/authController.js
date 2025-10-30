@@ -74,10 +74,11 @@ const login = async(req,res)=>{
                 }
             }
         );
-        if (user)
+        if (!foundUser){
+            return res.status(404).json({error : 'User not found!'});
+        }
 
-        if (user.length === 0)
-             return res.status(404).json({error : 'User not found!'})
+        
 
 
  

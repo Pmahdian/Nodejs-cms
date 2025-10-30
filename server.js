@@ -8,7 +8,7 @@ const userRoutes = require('./src/routes/users');
 
 const app = express();
 
-app.use(cors());
+
 app.use(express.json());
 
 

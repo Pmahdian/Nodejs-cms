@@ -4,15 +4,15 @@ const { sequelize } = require('../config/sequelize');
 const User = sequelize.define('User', {
     // define username field
     username: {
-        type: DataTypes.STRING,  // ✅ تصحیح: DataTypes
+        type: DataTypes.STRING,  // ✅ 
         allowNull: false,
-        unique: true             // ✅ تصحیح: unique
+        unique: true             // ✅ 
     },
-    // define email field         // ✅ تصحیح: email
+    // define email field         // ✅ 
     email: {
         type: DataTypes.STRING,  // ✅ تصحیح: DataTypes  
         allowNull: false,
-        unique: true             // ✅ تصحیح: unique
+        unique: true             // ✅ 
     },
     // define password field
     password: {

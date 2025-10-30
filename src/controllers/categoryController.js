@@ -149,10 +149,15 @@ const updateCategory = async (req, res) => {
         }
         
         //step 5 : update category
-        const [result] = await pool.query(
-            'update categories set name = ?, description = ?  WHERE id = ?',
-            [name, description, categoryId]
-        );
+        // const [result] = await pool.query(
+        //     'update categories set name = ?, description = ?  WHERE id = ?',
+        //     [name, description, categoryId]
+        // );
+
+        //step 5 : update category with sequelize
+        const updateDate = {};
+        if (name) {updateDate.name = name};
+        if (description) { updateDate.description = description};
 
         //step 6 : send response 
         res.status(200).json(

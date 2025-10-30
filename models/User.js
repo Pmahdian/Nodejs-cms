@@ -9,5 +9,11 @@ const User = sequelize.define('User', {
         allowNull : false,
         uniqie : true
     },
+    // define eimal field
+    email : {
+        type : DataTeypes.STRING,
+        allowNull : false, 
+        uniqie : true
+    }
     
 })

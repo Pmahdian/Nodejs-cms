@@ -8,6 +8,10 @@ async function testModel() {
         // step 1 : connection test
         await sequelize.authenticate();
         console.log('✅ connected to the database!');
+
+        // step 2 : sync model with database
+        await User.sync();
+        console.log('✅ User model synced with database.');
         
     } catch (error) {
         

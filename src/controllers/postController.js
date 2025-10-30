@@ -170,7 +170,7 @@ const getMyPosts = async (req, res) => {
 const getPostById = async (req, res) => {
     try {
         //step 1 : get post id from req.params
-        const postId = req.params.id;
+        const { id :postId } = req.params.id;
 
         //step 2 : get a post by postId from database
         // const [posts] = await pool.query(

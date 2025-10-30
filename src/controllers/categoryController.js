@@ -202,7 +202,7 @@ const updateCategory = async (req, res) => {
 const deleteCategory = async (req, res) => {
     try {
         //step 1 : get categoryId from req.params
-        const id = req.params;
+        const { id } = req.params;
 
         //step 2 : checking for category existing
         const existingCategory = await Category.findOne({

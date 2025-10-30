@@ -31,9 +31,7 @@ const createPost = async (req, res) => {
                 postId : post.id,
                 title : title
             }
-        )
-
-
+        );
 
         
     } catch (error) {

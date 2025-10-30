@@ -3,9 +3,14 @@ const { Category } = require('../models/associations');
 const getAllCategories = async (req, res) => {
     try {
         //step 1 : get all categories from database
-        const [categories] = await pool.query(
-            'select * from categories order by name ASC'
-        );
+        // const [categories] = await pool.query(
+        //     'select * from categories order by name ASC'
+        // );
+
+        // step 1 : get all categories from DB with sequelize
+        const categories = await Category.findAll({
+            order : [['name', 'ASC']]
+        })
 
         //step 2 : send response 
         if (categories.length === 0){
@@ -54,11 +59,14 @@ const createCategory = async (req, res) => {
         }
 
         //step 3 : Cheking for duplicated names
-        const [existingCategories] = await pool.query(
-            'select id from categories where name = ?',
-            [name]
-        );
-        if (existingCategories.length > 0){
+        const existingCategory = await Category.findOne(
+            {
+                where : {
+                    name : name
+                }
+            }
+        )
+        if (existingCategory){
             return res.status(400).json(
                 {
                     success : false,
@@ -68,18 +76,23 @@ const createCategory = async (req, res) => {
         }
 
         //step 4 : insert into database
-        const [result] = await pool.query(
-            'insert into categories (name, description) values (?, ?)',
-            [name, description || null]
-        );
+        // const [result] = await pool.query(
+        //     'insert into categories (name, description) values (?, ?)',
+        //     [name, description || null]
+        // );
+
+        //step 4 : insert into DB with sequelize
+        const category = await Category.create({
+            name : name,
+            description : description || null
+        })
 
         //step 5 : send success response
         res.status(201).json(
             {
                 success : true,
                 message : 'Category created successfully.',
-                categoryId : result.insertId,
-                name : name
+                category : category
             }
         );
 
@@ -101,10 +114,10 @@ const createCategory = async (req, res) => {
 const updateCategory = async (req, res) => {
     try {
         //step 1 : get categoryId from params
-        const categoryId = req.params.categoryId;
+        const { id } = req.params;
 
         //step 2 : get data from body
-        const {name, description} = req.body;
+        const { name, description } = req.body;
 
         //step 3 : validation
         if (!name && !description){

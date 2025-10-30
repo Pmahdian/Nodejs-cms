@@ -1,4 +1,4 @@
-const pool = require('../config/database')
+const { Post } = require('../models/associations');
 
 const createPost = async (req, res) => {
     try {
@@ -16,10 +16,7 @@ const createPost = async (req, res) => {
             });
         
         //step 4 : save post in database
-        const [result] = await pool.query(
-            'insert into posts (title, content, user_id, category_id) values (?, ?, ?, ?)',
-            [title, content,userId, category_id]
-        );
+        const post = await Post.create()
 
         //step 5 : send success response
         res.status(201).json(

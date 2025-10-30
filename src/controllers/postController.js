@@ -335,12 +335,16 @@ const deletePost = async (req, res) => {
         const userId = req.user.userId;
 
         //step 3 : check for user and post id existing
-        const [existingPosts] = await pool.query(
-            'select * from posts where id = ? and user_id = ?',
-            [postId, userId]
+        const existingPost = await Post.findOne(
+            {
+                where : 
+                {id : postId,
+                    user_id : userId
+                }
+            }
         );
-        if (existingPosts.length === 0){
-            res.status(404).json(
+        if (!existingPost){
+            return res.status(404).json(
                 {
                     success : false,
                     message : "post not found or you haven't access!"
@@ -349,8 +353,13 @@ const deletePost = async (req, res) => {
             
         }
 
-        //step 4 : delete post
-        await pool.query('delete from posts where id = ?', [postId])
+        //step 4 : delete post with sequelize
+        await Post.destroy({
+            where : {
+                id : postId,
+                user_id : userId
+            }
+        });
 
         //step 5 : send response 
         res.status(200).json(

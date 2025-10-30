@@ -50,7 +50,7 @@ const updateProfile = async (req, res) => {
         const {username ,email} = req.body;
 
         //step 3 : validation
-        if (!username || !email) {
+        if (!username && !email) {
             return res.status(400).json(
                 {
                     success : false,

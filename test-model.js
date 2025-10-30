@@ -12,8 +12,13 @@ async function testModel() {
         // step 2 : sync model with database
         await User.sync();
         console.log('✅ User model synced with database.');
+
+        console.log('successful')
         
     } catch (error) {
+        //error handling
+        console.error('error:', error);
+
         
     }
     

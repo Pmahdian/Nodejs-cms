@@ -6,21 +6,18 @@ const getProfile = async (req, res) => {
         //step 1 : get userId from req.user middleware
         const userId = req.user.userId;
 
-        //step 2 : find user in databse without password
-        const [users] = await pool.query(
-            'select username, email from users where id = ?',
-            [userId]
-        );
+        //step 2 : find user in databse without password with sequelize
+        const user = await User.findByPk(userId,
+            {
+                attributes : ['id', 'username', 'email', 'created_at'] //without password
+            });
 
     
-        if (users.length === 0){
-            return res.status(404).json(
-                {
-                    success : false,
-                    message : 'user not found'
-                }
-            )
-
+        if (!user){
+            return res.status(404).json({
+                success : false,
+                message : "User not found"
+            });
         }
         //step 3 : send user information
         res.status(200).json(

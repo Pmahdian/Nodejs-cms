@@ -31,10 +31,13 @@ const register = async (req,res)=>{
        const hashedPassword = await bcrypt.hash(password, 10);
 
 
-       //step 5 : insert user in database
-       const [result] = await pool.query(
-        'insert into users(username, email, password) values(?, ?, ?)',
-        [username, email, hashedPassword]
+       //step 5 : insert user in database with Sequelize (refactoring)
+       const user = await User.create(
+        {
+            username : username,
+            email : email,
+            password : hashedPassword
+        }
        );
 
        //step 6 : send a Successful response

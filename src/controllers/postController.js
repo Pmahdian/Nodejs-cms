@@ -15,8 +15,13 @@ const createPost = async (req, res) => {
                 error : 'title and content fields are required!'
             });
         
-        //step 4 : save post in database
-        const post = await Post.create()
+        //step 4 : save post in database with sequelize
+        const post = await Post.create({
+            title : title,
+            content : content,
+            user_id : userId,
+            category_id : category_id || null
+        });
 
         //step 5 : send success response
         res.status(201).json(

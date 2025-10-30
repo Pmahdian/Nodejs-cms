@@ -1,3 +1,4 @@
+const { destroy } = require('../config/database');
 const { Category } = require('../models/associations');
 const { Op, where } = require('sequelize');
 
@@ -155,9 +156,9 @@ const updateCategory = async (req, res) => {
         // );
 
         //step 5 : update category with sequelize
-        const updateDate = {};
-        if (name) {updateDate.name = name};
-        if (description) { updateDate.description = description};
+        const updateData = {};
+        if (name) {updateData.name = name};
+        if (description) { updateData.description = description};
 
         const [affectedRows] = await Category.update(updateDate,
             {
@@ -201,14 +202,13 @@ const updateCategory = async (req, res) => {
 const deleteCategory = async (req, res) => {
     try {
         //step 1 : get categoryId from req.params
-        const categoryId = req.params.categoryId;
+        const id = req.params;
 
         //step 2 : checking for category existing
-        const [existingCategory] = await pool.query(
-            'select * from categories where id = ?',
-            [categoryId]
-        );
-        if (existingCategory.length === 0){
+        const existingCategory = await Category.findOne({
+            where: {id : id}
+        });
+        if (!existingCategory){
             return res.status(404).json(
                 {
                     success : false,
@@ -217,16 +217,16 @@ const deleteCategory = async (req, res) => {
             )
         }
         // step 3 : delete from database
-        await pool.query(
-            'delete from categories where id = ?', [categoryId]
-        );
+        await Category.destroy({
+            where : {id : id}
+        })
 
         // step 4 : send response
         res.status(200).json(
             {
                 success : true,
                 message : 'Category deleted successfully.',
-                categoryId : categoryId
+                categoryId : id
             }
         )
         

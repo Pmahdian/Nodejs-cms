@@ -76,17 +76,13 @@ const login = async(req,res)=>{
         );
         if (!foundUser){
             return res.status(404).json({error : 'User not found!'});
-        }
-
-        
-
+        };
 
  
-
         // step 5 : compare plain password and hashed password
         const passCompare = await bcrypt.compare(password, foundUser.password);
         if (!passCompare)
-            return res.status(401).json({error : 'login faild'})
+            return res.status(401).json({error : 'Login faild'});
 
         // step 6 : create jwt token
         const token = jwt.sign(

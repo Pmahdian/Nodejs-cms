@@ -1,4 +1,4 @@
-const { Model } = require('sequelize');
+const { Model, where } = require('sequelize');
 const { Post, User, Category } = require('../models/associations');
 
 const createPost = async (req, res) => {
@@ -262,22 +262,42 @@ const updatePost = async (req, res) => {
             message : 'at least one field is required!'
         });
     }
-        //step 5 : check for user and post id existing
-        const [existingPosts] = await pool.query('select * from posts where id = ? and user_id = ?', 
-            [postId, userId]
-        );
-        if (existingPosts.length === 0) {
+        //step 5 : check for user and post id existing with sequelize
+        const existingPost = await Post.findOne(
+            {
+                where : {
+                    user_id : userId,
+                    id : postId
+                }
+            }
+        )
+        if (!existingPost) {
             return res.status(404).json(
                 {
                     success : false,
-                    message : "post not found or you haven't access"
+                    message : "Post not found or you haven't access"
                 }
             );
         };
 
-        //stpe 6 : update post
-        const [result] = await pool.query(' update posts set title = ?, content = ?, category_id = ?, updated_at = CURRENT_TIMESTAMP where id = ?',
-            [title, content, category_id, postId]
+        //stpe 6 : update post 
+        // const [result] = await pool.query(' update posts set title = ?, content = ?, category_id = ?, updated_at = CURRENT_TIMESTAMP where id = ?',
+        //     [title, content, category_id, postId]
+        // );
+
+        // step 6 : update post with sequelize
+        const updatedPost = await Post.update(
+            {
+                title : title || existingPost.title,
+                content : content || existingPost.content,
+                category_id : category_id || existingPost.category_id
+            },
+            {
+                where : {
+                    id : postId,
+                    user_id : userId
+                }
+            }
         );
 
 

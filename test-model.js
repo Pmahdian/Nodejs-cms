@@ -5,22 +5,33 @@ async function testModel() {
     try {
         console.log('🔌 Connecting to database...');
 
-        // step 1 : connection test
+        // Step 1: Connection test
         await sequelize.authenticate();
-        console.log('✅ connected to the database!');
+        console.log('✅ Connected to the database!');
 
-        // step 2 : sync model with database
+        // Step 2: Sync model with database
         await User.sync();
         console.log('✅ User model synced with database.');
 
-        console.log('successful')
+        // Step 3: Create test user
+        const testUser = await User.create({
+            username: 'testuser' + Date.now(), // Make it unique
+            email: 'test' + Date.now() + '@example.com',
+            password: '123456'
+        });
+        console.log('✅ Test user created with ID:', testUser.id);
+
+        console.log('🎉 All tests successful! ORM is working!');
+
+        // Exit the process
+        process.exit(0);
         
     } catch (error) {
-        //error handling
-        console.error('error:', error);
-
-        
+        // Error handling
+        console.error('❌ Error:', error.message);
+        process.exit(1);
     }
-    
 }
 
+// Call the function
+testModel();

@@ -11,7 +11,6 @@ const getProfile = async (req, res) => {
             {
                 attributes : ['id', 'username', 'email', 'created_at'] //without password
             });
-
     
         if (!user){
             return res.status(404).json({
@@ -24,10 +23,7 @@ const getProfile = async (req, res) => {
             {
                 success : true,
                 user : user
-            }
-        )
-
-        
+            })       
     } catch (error) {
         //step 4 : Error handling
         console.error(' Get profile error:', error);
@@ -56,7 +52,6 @@ const updateProfile = async (req, res) => {
                 })
         }
 
-
         //step 4 check for duplicate username or email with sequeliz
         if ( username || email ) {
             const existingUser = await User.findOne(
@@ -74,8 +69,7 @@ const updateProfile = async (req, res) => {
                     {
                         success : false,
                         message : 'Email or Username is duplicate'
-                    }
-                )           
+                    })           
              }      
         }
 
@@ -104,10 +98,7 @@ const updateProfile = async (req, res) => {
                 message : "User updated successfully."
             }
         )
-
-
-
-        
+       
     } catch (error) {
         // step 7 : Error handling
         console.error('Update user error;', error);

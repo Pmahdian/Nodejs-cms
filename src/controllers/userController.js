@@ -80,7 +80,7 @@ const updateProfile = async (req, res) => {
                     }});
 
             if (existingUser) {
-                res.status(400).json(
+               return res.status(400).json(
                     {
                         success : false,
                         message : 'Email or Username is duplicate'

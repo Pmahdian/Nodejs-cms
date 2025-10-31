@@ -35,10 +35,8 @@ const getProfile = async (req, res) => {
             {
                 success : false,
                 message : "Server error"
-            }
-        )
-        
-    }
+            })
+        }
 }
 
 const updateProfile = async (req, res) => {
@@ -55,17 +53,9 @@ const updateProfile = async (req, res) => {
                 {
                     success : false,
                     message : 'At least one filed is required'
-                }
-            )
+                })
         }
 
-
-        //-----------------------------------------refactoring in proccess.....
-        // step 4 : check for duplicate username and email
-        // const [result] = await pool.query(
-        //     'select id from users where (username = ? or email = ?) and id != ?',
-        //     [username, email, userId]
-        // );
 
         //step 4 check for duplicate username or email with sequeliz
         if ( username || email ) {
@@ -126,9 +116,7 @@ const updateProfile = async (req, res) => {
                 success : false,
                 message : "server error"
             }
-        )
-        
-    }
-}
+        )}
+    };
 
 module.exports = {getProfile, updateProfile};

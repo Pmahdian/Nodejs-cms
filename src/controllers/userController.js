@@ -89,13 +89,6 @@ const updateProfile = async (req, res) => {
              }      
         }
 
-        //step 5 : update user in database
-
-        // await pool.query(
-        //     'update users set username = ?, email = ? where id = ?',
-        //     [username, email, userId]
-        // )
-
         //step 5 update user in DB with sequelize
         const updateData = {}
         if (username) updateData.username = username;

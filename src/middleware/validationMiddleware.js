@@ -3,6 +3,15 @@ const validateRequest = (schema) => {
         // Compare req.body data with schema
         const { error } = schema.validate(req.body);
 
+        if (error) {
+            // if there is an error, return first error
+            return res.status(400).json({
+                success : false,
+                message : error.details[0].message
+            })
+
+        }
+
     }
 
 

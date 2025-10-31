@@ -11,6 +11,16 @@ const registerSchema = Joi.object(
             'string.alphanum' :'Username can only cantain letters and numbers.',
             'string.min' : 'Username must be at least 3 characters.',
             'any.required' : 'Username is required.'
-        })
-    }
-)
+        }),
+
+        emial : Joi.string()
+        .email()
+        .required()
+        .message({
+            'string.email' : 'Please enter a valid email.'
+        }),
+        password : Joi.string()
+            .min(6)
+            .required()
+        
+    });

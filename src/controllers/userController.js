@@ -100,6 +100,13 @@ const updateProfile = async (req, res) => {
                 {id : userId}
             }
         )
+        if (affectedRows === 0){
+            return res.status(404).json(
+                {
+                    success : false,
+                    message : 'User not found'
+                });
+            }
         //step 6 : send response
         res.status(200).json(
             {

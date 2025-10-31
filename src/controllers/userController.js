@@ -101,7 +101,7 @@ const updateProfile = async (req, res) => {
         if (username) updateData.username = username;
         if (email) updateData.email = email;
 
-        await User.update(updateData,
+        const [affectedRows] = await User.update(updateData,
             {
                 where : 
                 {id : userId}

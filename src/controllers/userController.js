@@ -62,10 +62,32 @@ const updateProfile = async (req, res) => {
 
         //-----------------------------------------refactoring in proccess.....
         // step 4 : check for duplicate username and email
-        const [result] = await pool.query(
-            'select id from users where (username = ? or email = ?) and id != ?',
-            [username, email, userId]
-        );
+        // const [result] = await pool.query(
+        //     'select id from users where (username = ? or email = ?) and id != ?',
+        //     [username, email, userId]
+        // );
+
+        //step 4 check for duplicate username or email with sequeliz
+        if ( username || email ) {
+            const existingUser = await User.findOne(
+                {
+                    where : {
+                        [Op.or] : [
+                            {username :username},
+                            {email : email}
+                        ],
+                        id : {[Op.ne] : id}
+                    }});
+
+            if (existingUser) {
+                res.status(400).json(
+                    {
+                        success : false,
+                        message : 'Email or Username is duplicate'
+                    }
+                )           
+             }      
+        }
 
         if (result.length > 0){
             return res.status(400).json(

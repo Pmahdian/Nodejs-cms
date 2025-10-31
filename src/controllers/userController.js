@@ -76,7 +76,7 @@ const updateProfile = async (req, res) => {
                             {username :username},
                             {email : email}
                         ],
-                        id : {[Op.ne] : id}
+                        id : {[Op.ne] : userId}
                     }});
 
             if (existingUser) {

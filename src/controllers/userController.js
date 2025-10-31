@@ -89,16 +89,6 @@ const updateProfile = async (req, res) => {
              }      
         }
 
-        if (result.length > 0){
-            return res.status(400).json(
-                {
-                    success : false, 
-                    message : 'email or username is duplicate'
-                }
-            )
-
-        }
-
         //step 5 : update user in database
 
         await pool.query(

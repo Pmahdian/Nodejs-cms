@@ -10,4 +10,10 @@ const createCategorySchema = Joi.object({
         'any.required' : 'Name is required.'
     }),
     description : Joi.string()
-})
+    .min(10)
+    .max(200)
+    .optional()
+    .message({
+        'string.min' : 'description must be at least 10 characters long.'
+    })
+});

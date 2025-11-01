@@ -36,4 +36,4 @@ const updatePostSchema = Joi.object({
     .integer()
     .positive()
     .optional()
-})
+}).min(1);

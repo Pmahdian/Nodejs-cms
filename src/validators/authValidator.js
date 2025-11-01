@@ -10,7 +10,7 @@ const registerSchema = Joi.object(
         .message({
             'string.alphanum' :'Username can only cantain letters and numbers.',
             'string.min' : 'Username must be at least 3 characters.',
-            'string.max' : 'Username cannot be longer than 30 ckaracters',
+            'string.max' : 'Username cannot be longer than 30 characters',
             'any.required' : 'Username is required.'
         }),
 

@@ -15,7 +15,7 @@ const {
 
 
 // POST /api/posts + '/' = /api/posts/
-router.post('/', authMiddleware, createPost);
+router.post('/', authMiddleware,validateRequest(createPostSchema) ,createPost);
 // GET /api/posts + '/' = /api/posts/
 router.get('/', getAllPosts)
 // GET myPosts

@@ -5,14 +5,14 @@ const createPostSchema = Joi.object({
     .min(3)
     .max(255)
     .required()
-    .message({ 
+    .messages({ 
         'string.min' : 'Title must be at least 3 characters long.',
         'any.required' : 'Title is required.'
     }),
     content : Joi.string()
     .min(10)
     .required()
-    .message({
+    .messages({
         'string.min' : 'Content must be at least 10 characters long.',
         'any.required' : 'Content is required'
     }),

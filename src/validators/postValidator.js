@@ -36,4 +36,5 @@ const updatePostSchema = Joi.object({
     .integer()
     .positive()
     .optional()
-}).min(1);
+}).min(1); //at least one field must be updated
+

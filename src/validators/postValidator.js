@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const creatPostSchema = Joi.object({
+const createPostSchema = Joi.object({
     title : Joi.string()
     .min(3)
     .max(255)
@@ -15,5 +15,10 @@ const creatPostSchema = Joi.object({
     .message({
         'string.min' : 'Content must be at least 10 characters long.',
         'any.required' : 'Content is required'
-    })
-})
+    }),
+    category_id : Joi.number()
+    .integer()
+    .positive()
+    .optional()
+
+});

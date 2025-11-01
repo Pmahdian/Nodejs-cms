@@ -22,3 +22,11 @@ const createPostSchema = Joi.object({
     .optional()
 
 });
+
+
+const updatePostSchema = Joi.object({
+    title : Joi.string()
+    .min(3)
+    .max(255)
+    .optional
+})

@@ -29,7 +29,7 @@ const updatePostSchema = Joi.object({
     .min(3)
     .max(255)
     .optional(),
-    cosntent : Joi.string()
+    content : Joi.string()
     .min(10)
     .optional(),
     category_id : Joi.number()

@@ -38,3 +38,8 @@ const updatePostSchema = Joi.object({
     .optional()
 }).min(1); //at least one field must be updated
 
+
+module.exports = {
+    createPostSchema,
+    updatePostSchema
+}

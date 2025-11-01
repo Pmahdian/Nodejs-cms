@@ -31,3 +31,7 @@ const updateCategorySchema = Joi.object({
     .optional()
 }).min(1);
 
+module.exports = { 
+    createCategorySchema,
+    updateCategorySchema
+}

@@ -17,3 +17,17 @@ const createCategorySchema = Joi.object({
         'string.min' : 'description must be at least 10 characters long.'
     })
 });
+
+
+const updateCategorySchema = Joi.object({
+    name : Joi.string()
+    .min(3)
+    .max(200)
+    .optional(),
+
+    description : Joi.string()
+    .min(10)
+    .max(200)
+    .optional()
+}).min(1);
+

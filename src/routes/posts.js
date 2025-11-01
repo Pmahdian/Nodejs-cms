@@ -23,7 +23,7 @@ router.get('/my-posts', authMiddleware, getMyPosts);
 // Get postById /:id
 router.get('/:id', getPostById);
 // PUT /api/posts/:id
-router.put('/:id', authMiddleware, updatePost);
+router.put('/:id', authMiddleware, validateRequest(updatePostSchema), updatePost);
 //DELETE /api/posts/:id
 router.delete('/:id',authMiddleware, deletePost);
 

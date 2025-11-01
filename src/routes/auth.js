@@ -16,4 +16,4 @@ router.post('/login',validateRequest(loginSchema) ,login);
 
 // router.get('/test-protected', authMiddleware, testAuth);
 
-module.exports = router;t
+module.exports = router;

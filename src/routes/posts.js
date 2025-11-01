@@ -4,7 +4,14 @@ const authMiddleware = require('../middleware/authMiddleware');
 const validateRequest = require('../middleware/validationMiddleware');
 const { createPostSchema, updatePostSchema } = require('../validators/postValidator');
 
-const {createPost, getAllPosts, getMyPosts, getPostById, updatePost, deletePost} = require('../controllers/postController');
+const { 
+    createPost,
+    getAllPosts, 
+    getMyPosts, 
+    getPostById, 
+    updatePost, 
+    deletePost
+} = require('../controllers/postController');
 
 
 // POST /api/posts + '/' = /api/posts/

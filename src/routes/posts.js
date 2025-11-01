@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middleware/authMiddleware');
+const validateRequest = require('../middleware/validationMiddleware');
+const { createPostSchema, updatePostSchema } = require('../validators/postValidator');
 
 const {createPost, getAllPosts, getMyPosts, getPostById, updatePost, deletePost} = require('../controllers/postController');
 

@@ -15,3 +15,5 @@ const updateProfileSchema = Joi.object({
             'string.email': 'Please provide a valid email address'
         })
 }).min(1);
+
+module.exports = updateProfileSchema;

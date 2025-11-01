@@ -13,8 +13,8 @@ const {
 
 // router
 router.get('/',getAllCategories);
-router.post('/',createCategory);
-router.put('/:id', updateCategory);
+router.post('/', validateRequest(createCategorySchema), createCategory);
+router.put('/:id', validateRequest(updateCategorySchema), updateCategory);
 router.delete('/:id', deleteCategory)
 
 module.exports = router;

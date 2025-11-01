@@ -14,7 +14,7 @@ const registerSchema = Joi.object(
             'any.required' : 'Username is required.'
         }),
 
-        emial : Joi.string()
+        email : Joi.string()
         .email()
         .required()
         .message({
@@ -42,4 +42,4 @@ const registerSchema = Joi.object(
     module.exports = {
         registerSchema,
         loginSchema
-    }
+    };

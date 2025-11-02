@@ -11,7 +11,9 @@ const {
      updateProfile
     } = require('../controllers/userController');
 
+
+// Routes with valdidation
 router.get('/profile', authMiddleware, getProfile);
-router.put('/profile', authMiddleware, updateProfile);
+router.put('/profile', validatorRequest(updateProfileSchema), authMiddleware, updateProfile);
 
 module.exports = router;

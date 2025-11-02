@@ -1,5 +1,6 @@
 const { Model, where } = require('sequelize');
 const { Post, User, Category } = require('../models/associations');
+const { sequelize } = require('../config/sequelize');
 
 const createPost = async (req, res) => {
     try {
@@ -48,10 +49,26 @@ const createPost = async (req, res) => {
 
 const getAllPosts = async (req, res) => {
     try {
-        //step 1 : get data from database
-        // const [posts] = await pool.query(
-        //     'SELECT p.id, p.title, p.content, p.created_at, u.username as author, c.name as category_name FROM posts p LEFT JOIN users u ON p.user_id = u.id LEFT JOIN categories c ON p.category_id = c.id ORDER BY p.created_at DESC'
-        // );
+
+        //step 1 : get parametrs from req.query
+        const { search, category, page = 1 , limit = 10 } = req.query;
+
+        //step 2 : where conditions 
+        const whereConditions = {}; //An empty object for conditions
+
+        // if the user entered a sesarch term
+        if (search) {
+            const { Op } = require(sequelize); //import sequelize operators
+            whereConditions[Op.or] = [ //Or between title and content
+
+
+
+            ]
+        }
+
+
+
+
 
         //step 1 : get data from database with Sequelize
         const posts = await Post.findAll(

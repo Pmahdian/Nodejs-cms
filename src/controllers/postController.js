@@ -61,12 +61,14 @@ const getAllPosts = async (req, res) => {
             const { Op } = require(sequelize); //import sequelize operators
             whereConditions[Op.or] = [ //Or between title and content
                 { title : { [Op.like] : `%${search}%`}},
-                
+
 
 
             ]
         }
 
+
+        
 
 
 

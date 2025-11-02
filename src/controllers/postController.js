@@ -52,7 +52,12 @@ const getAllPosts = async (req, res) => {
         //step 1 : get parametrs from req.query
         const { search, category, page = 1 , limit = 10 } = req.query;
 
-        
+        //step 2 : where conditions 
+        const whereConditions = {}; //An empty object for conditions
+
+        // 
+
+
 
 
 

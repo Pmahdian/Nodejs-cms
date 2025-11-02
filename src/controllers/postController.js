@@ -56,16 +56,17 @@ const getAllPosts = async (req, res) => {
         //step 2 : where conditions 
         const whereConditions = {}; //An empty object for conditions
 
-        // if the user entered a sesarch term
+        // if the user entered a search term
         if (search) {
             const { Op } = require(sequelize); //import sequelize operators
             whereConditions[Op.or] = [ //Or between title and content
                 { title : {[Op.like] : `%${search}%` }}, // if the title contains the search word
                 {content : {[Op.like] : `%${search}%`}} // if the content contains the search word
-
-
-
-            ]
+            ];
+        }
+        //if user entered a category 
+        if (category) {
+            whereConditions.category_id = parseInt(category) //only posts in this category
         }
 
 

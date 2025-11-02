@@ -48,6 +48,14 @@ const createPost = async (req, res) => {
 
 const getAllPosts = async (req, res) => {
     try {
+
+        //step 1 : get parametrs from req.query
+        const { search, category, page = 1 , limit = 10 } = req.query;
+
+        
+
+
+
         //step 1 : get data from database with Sequelize
         const posts = await Post.findAll(
             {

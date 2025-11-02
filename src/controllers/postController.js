@@ -110,8 +110,6 @@ const getMyPosts = async (req, res) => {
         //step 1 : get userId from req.user moddleware
         const userId = req.user.userId
 
-        //step 2 : get posts of the user from database
-        // const [posts] = await pool.query('SELECT p.id, p.title, p.content, p.created_at, u.username as author, c.name as category_name FROM posts p LEFT JOIN users u ON p.user_id = u.id LEFT JOIN categories c ON p.category_id = c.id WHERE p.user_id = ? ORDER BY p.created_at DESC', [userId]);
 
         //step 2 : get posts of the user from database with sequelize
         const posts = await Post.findAll({

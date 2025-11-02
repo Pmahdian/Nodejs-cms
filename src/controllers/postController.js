@@ -1,5 +1,6 @@
 const { Model, where } = require('sequelize');
 const { Post, User, Category } = require('../models/associations');
+const { sequelize } = require('../config/sequelize');
 
 const createPost = async (req, res) => {
     try {
@@ -55,7 +56,10 @@ const getAllPosts = async (req, res) => {
         //step 2 : where conditions 
         const whereConditions = {}; //An empty object for conditions
 
-        // 
+        // if the user entered a sesarch term
+        if (search) {
+            const { Op } = require(sequelize); //import sequelize operators
+        }
 
 
 

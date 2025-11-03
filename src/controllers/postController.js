@@ -99,22 +99,10 @@ const getAllPosts = async (req, res) => {
                 offset : offset         //start from which recored
             });
 
-        // step 2 : send response
-        if (posts.length === 0)
-            return res.status(200).json({
-                success : true,
-                message : "There is no post", 
-                posts : []
-        
-            });
-        res.status(200).json(
-            {
-                success : true,
-                message : "Posts received successfully.",
-                count : posts.length,
-                posts : posts
-
-            });
+        // step 5 : Calculating pagination information
+        const totalPosts = await Post.count({
+            where : whereConditions 
+        })
         
     } catch (error) {
         //step 3 : Error handling 

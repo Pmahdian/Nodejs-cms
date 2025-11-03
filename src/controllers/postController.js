@@ -73,6 +73,7 @@ const getAllPosts = async (req, res) => {
         const currentPage = parseInt(page) //current page (convert to number)
         const pageSize = parseIt(limit) //Number per page (convert to number)
         const offset = (currentPage - 1) * pageSize; //calculate the starting point
+        // Example : Page 2 with 10 items => offset = (2-1)*10 (start from the 11th item)
 
 
 

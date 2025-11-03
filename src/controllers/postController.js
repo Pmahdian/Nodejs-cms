@@ -108,9 +108,26 @@ const getAllPosts = async (req, res) => {
         // Checking for the existence of the next and previous page
         const hasNextPage = currentPage < totalPages;
         const hasPervPage = currentPage > 1;
+
+        // step 6 : constructing the final answer
+        if ( posts.length === 0 ) {
+            return res.status(200).json({
+                success: true,
+                message: "No posts found with the specified filters",
+                data: [], 
+                pagination: {
+                    page: currentPage,
+                    limit: pageSize,
+                    total: totalPosts,
+                    totalPages: totalPages,
+                    hasNext: hasNextPage,
+                    hasPrev: hasPrevPage
+                }
+            })
+        }
         
     } catch (error) {
-        //step 3 : Error handling 
+        //step : Error handling 
         console.error('Get posts error:', error);
         res.status(500).json(
             {

@@ -69,8 +69,8 @@ const getAllPosts = async (req, res) => {
             whereConditions.category_id = parseInt(category) //only posts in this category
         }
 
-        //step 3 : Pagination calculation
-        const currentPage = parseInt(page)
+        //step 3 : Pagination calculation 
+        const currentPage = parseInt(page) //current page (convert to number)
 
 
 

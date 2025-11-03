@@ -104,6 +104,10 @@ const getAllPosts = async (req, res) => {
             where : whereConditions 
         });
         const totalPages = Math.ceil(totalPosts / pageSize); //Total number of pages
+
+        // Checking for the existence of the next and previous page
+        const hasNextPage = currentPage < totalPages;
+        const hasPervPage = currentPage > 1;
         
     } catch (error) {
         //step 3 : Error handling 

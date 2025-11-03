@@ -93,7 +93,9 @@ const getAllPosts = async (req, res) => {
                     }
                 ],
                 order : [['created_at', 'DESC']],
-                attributes : ['id', 'title', 'content', 'created_at', 'user_id', 'category_id']
+                attributes : ['id', 'title', 'content', 'created_at', 'user_id', 'category_id'],
+                limit : pageSize,       //count per page
+                offset : offset         //start from which recored
             });
 
         // step 2 : send response

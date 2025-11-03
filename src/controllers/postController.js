@@ -76,10 +76,8 @@ const getAllPosts = async (req, res) => {
         // Example : Page 2 with 10 items => offset = (2-1)*10 (start from the 11th item)
 
 
+        //step 4 :Runnig a query to get posts with Sequelize
 
-
-
-        //step 1 : get data from database with Sequelize
         const posts = await Post.findAll(
             {
                 include : [

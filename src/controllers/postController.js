@@ -136,9 +136,9 @@ const getAllPosts = async (req, res) => {
                     total: totalPosts,
                     totalPages: totalPages,
                     hasNext: hasNextPage,
-                    hasPrev: hasPrevPage
+                    hasPrev: hasPrevPage}
 
-        })
+        });
         
     } catch (error) {
         //step : Error handling 

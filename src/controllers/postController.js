@@ -102,7 +102,8 @@ const getAllPosts = async (req, res) => {
         // step 5 : Calculating pagination information
         const totalPosts = await Post.count({
             where : whereConditions 
-        })
+        });
+        const totalPages = Math.ceil(totalPosts / pageSize); //Total number of pages
         
     } catch (error) {
         //step 3 : Error handling 

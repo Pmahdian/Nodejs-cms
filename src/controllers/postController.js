@@ -123,8 +123,22 @@ const getAllPosts = async (req, res) => {
                     hasNext: hasNextPage,
                     hasPrev: hasPrevPage
                 }
-            })
+            });
         }
+        // if the post is found
+        res.status(200).json({
+            success: true,
+            message: "Posts retrieeved successfully",
+                data: posts, 
+                pagination: {
+                    page: currentPage,
+                    limit: pageSize,
+                    total: totalPosts,
+                    totalPages: totalPages,
+                    hasNext: hasNextPage,
+                    hasPrev: hasPrevPage
+
+        })
         
     } catch (error) {
         //step : Error handling 

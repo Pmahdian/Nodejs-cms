@@ -49,68 +49,64 @@ const createPost = async (req, res) => {
 
 const getAllPosts = async (req, res) => {
     try {
+        // step 1 : get parameters from req.query
+        const { search, category, page = 1, limit = 10 } = req.query;
 
-        //step 1 : get parametrs from req.query
-        const { search, category, page = 1 , limit = 10 } = req.query;
-
-        //step 2 : where conditions 
-        const whereConditions = {}; //An empty object for conditions
+        // step 2 : where conditions 
+        const whereConditions = {}; // An empty object for conditions
 
         // if the user entered a search term
         if (search) {
-            const { Op } = require(sequelize); //import sequelize operators
-            whereConditions[Op.or] = [ //Or between title and content
-                { title : {[Op.like] : `%${search}%` }}, // if the title contains the search word
-                {content : {[Op.like] : `%${search}%`}} // if the content contains the search word
+            const { Op } = require('sequelize'); // ✅ 
+            whereConditions[Op.or] = [ // Or between title and content
+                { title: { [Op.like]: `%${search}%` } }, // if the title contains the search word
+                { content: { [Op.like]: `%${search}%` } } // if the content contains the search word
             ];
         }
-        //if user entered a category 
+        
+        // if user entered a category 
         if (category) {
-            whereConditions.category_id = parseInt(category) //only posts in this category
+            whereConditions.category_id = parseInt(category); // only posts in this category
         }
 
-        //step 3 : Pagination calculation 
-        const currentPage = parseInt(page) //current page (convert to number)
-        const pageSize = parseIt(limit) //Number per page (convert to number)
-        const offset = (currentPage - 1) * pageSize; //calculate the starting point
-        // Example : Page 2 with 10 items => offset = (2-1)*10 (start from the 11th item)
+        // step 3 : Pagination calculation 
+        const currentPage = parseInt(page); // current page (convert to number)
+        const pageSize = parseInt(limit); // ✅ تصحیح شد - Number per page (convert to number)
+        const offset = (currentPage - 1) * pageSize; // calculate the starting point
 
-
-        //step 4 :Runnig a query to get posts with Sequelize
-
-        const posts = await Post.findAll(
-            {
-                where : whereConditions,
-                include : [
-                    {
-                        model : User,
-                        attributes : ['id', 'username', 'email'],
-                        as : 'User'
-                    },
-                    {
-                        model : Category,
-                        attributes : ['id', 'name', 'description'],
-                        as : 'Category'
-                    }
-                ],
-                order : [['created_at', 'DESC']],
-                attributes : ['id', 'title', 'content', 'created_at', 'user_id', 'category_id'],
-                limit : pageSize,       //count per page
-                offset : offset         //start from which recored
-            });
+        // step 4 : Running a query to get posts with Sequelize
+        const posts = await Post.findAll({
+            where: whereConditions,
+            include: [
+                {
+                    model: User,
+                    attributes: ['id', 'username', 'email'],
+                    as: 'User'
+                },
+                {
+                    model: Category,
+                    attributes: ['id', 'name', 'description'],
+                    as: 'Category'
+                }
+            ],
+            order: [['created_at', 'DESC']],
+            attributes: ['id', 'title', 'content', 'created_at', 'user_id', 'category_id'],
+            limit: pageSize,       // count per page
+            offset: offset         // start from which record
+        });
 
         // step 5 : Calculating pagination information
         const totalPosts = await Post.count({
-            where : whereConditions 
+            where: whereConditions 
         });
-        const totalPages = Math.ceil(totalPosts / pageSize); //Total number of pages
+        const totalPages = Math.ceil(totalPosts / pageSize); // Total number of pages
 
         // Checking for the existence of the next and previous page
         const hasNextPage = currentPage < totalPages;
-        const hasPervPage = currentPage > 1;
+        const hasPrevPage = currentPage > 1; // ✅ 
 
         // step 6 : constructing the final answer
-        if ( posts.length === 0 ) {
+        if (posts.length === 0) {
             return res.status(200).json({
                 success: true,
                 message: "No posts found with the specified filters",
@@ -121,37 +117,34 @@ const getAllPosts = async (req, res) => {
                     total: totalPosts,
                     totalPages: totalPages,
                     hasNext: hasNextPage,
-                    hasPrev: hasPrevPage
+                    hasPrev: hasPrevPage // ✅ 
                 }
             });
         }
+
         // if the post is found
         res.status(200).json({
             success: true,
-            message: "Posts retrieeved successfully",
-                data: posts, 
-                pagination: {
-                    page: currentPage,
-                    limit: pageSize,
-                    total: totalPosts,
-                    totalPages: totalPages,
-                    hasNext: hasNextPage,
-                    hasPrev: hasPrevPage}
-
+            message: "Posts retrieved successfully",
+            data: posts, 
+            pagination: {
+                page: currentPage,
+                limit: pageSize,
+                total: totalPosts,
+                totalPages: totalPages,
+                hasNext: hasNextPage,
+                hasPrev: hasPrevPage // ✅ تصحیح شد
+            }
         });
-        
+
     } catch (error) {
-        //step 7 : Error handling 
+        // step 7 : Error handling 
         console.error('Get posts error:', error);
-        res.status(500).json(
-            {
-                success : false,
-                error : 'Server error'
-            });
+        res.status(500).json({
+            success: false,
+            error: 'Server error'
+        });
     }
-
-
-
 };
 
 

@@ -80,6 +80,7 @@ const getAllPosts = async (req, res) => {
 
         const posts = await Post.findAll(
             {
+                where : whereConditions,
                 include : [
                     {
                         model : User,

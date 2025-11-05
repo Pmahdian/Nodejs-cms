@@ -71,7 +71,7 @@ const getAllPosts = async (req, res) => {
 
         // step 3 : Pagination calculation 
         const currentPage = parseInt(page); // current page (convert to number)
-        const pageSize = parseInt(limit); // ✅ تصحیح شد - Number per page (convert to number)
+        const pageSize = parseInt(limit); // ✅  Number per page (convert to number)
         const offset = (currentPage - 1) * pageSize; // calculate the starting point
 
         // step 4 : Running a query to get posts with Sequelize

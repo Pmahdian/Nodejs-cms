@@ -12,6 +12,7 @@ const storage = multer.diskStorage({
     //filrname function specifies whrat the file name should be
     filename : function (req, file, cb){
         //create a unique name to prevent overwriting
+        const uniqueName = Date.now() + '_' + Math.round(Math.random() * 1E9) + path.extname(file.originalname);
 
     }
 })

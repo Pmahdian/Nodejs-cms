@@ -6,6 +6,7 @@ const path =require('path');
 // =============================================
 const storage = multer.diskStorage({
     destination : function (req, file, cb) { //cb=callback func
+        cb(null, 'uploads/');
 
     }
 })

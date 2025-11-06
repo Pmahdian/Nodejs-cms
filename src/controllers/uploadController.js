@@ -8,5 +8,10 @@ const storage = multer.diskStorage({
     destination : function (req, file, cb) { //cb=callback func
         cb(null, 'uploads/');
 
+    },
+    //filrname function specifies whrat the file name should be
+    filename : function (req, file, cb){
+        //create a unique name to prevent overwriting
+
     }
 })

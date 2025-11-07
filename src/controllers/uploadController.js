@@ -13,6 +13,20 @@ const storage = multer.diskStorage({
     filename : function (req, file, cb){
         //create a unique name to prevent overwriting
         const uniqueName = Date.now() + '_' + Math.round(Math.random() * 1E9) + path.extname(file.originalname);
+        cb(null, uniqueName)
 
     }
-})
+});
+
+// =============================================
+// File Type Filter
+// =============================================
+
+
+const fileFilter = (req, file, cd) =>{
+    if (file.mimtype.startWith('image/')){
+        // if it was a photo file, accept it
+        cb(null, true);
+    }
+}
+

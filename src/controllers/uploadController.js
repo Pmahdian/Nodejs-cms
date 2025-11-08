@@ -78,6 +78,12 @@ const uploadImage = async(req, res) => {
         });
         
     } catch (error) {
+        //Error handling
+        console.error('Upload error:', error)
+        res.status(500).json({
+            success : false,
+            message : 'Error uploading photo'
+        });
         
     }
-}
+};

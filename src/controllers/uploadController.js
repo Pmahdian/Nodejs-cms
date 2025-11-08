@@ -58,8 +58,15 @@ const uploadImage = async(req, res) => {
             return res.status(400).json({
                 success : false,
                 message : 'Please select a photo to upload'
-            })
+            });
         }
+
+
+        // Create a full URL to access the image
+        // req.protocol = 'http' or 'https'
+        // req.get('host') = 'localhost:3000'
+        // req.file.filename = generated file name
+        const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
         
     } catch (error) {
         

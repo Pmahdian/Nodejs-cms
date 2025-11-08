@@ -67,6 +67,15 @@ const uploadImage = async(req, res) => {
         // req.get('host') = 'localhost:3000'
         // req.file.filename = generated file name
         const imageUrl = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
+
+
+        //return success response
+        res.status(200).json({
+            success : true,
+            message : 'Photo uploaded successfully',
+            imageUrl : imageUrl,
+            filename : req.file.filename //file name in server
+        });
         
     } catch (error) {
         

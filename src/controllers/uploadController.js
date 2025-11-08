@@ -32,5 +32,16 @@ const fileFilter = (req, file, cd) =>{
         // if it wasn't a photo file, returen an error
         cb(new Error('Only image files are allowed!'), false);
     }
-}
+};
 
+// =============================================
+// Create Multer instance
+// =============================================
+
+const upload = multer({
+    storage : storage,
+    fileFilter : fileFilter,
+    limits : {
+        fileSize : 5 * 1024 * 1024 //max 5 MB
+    }
+});

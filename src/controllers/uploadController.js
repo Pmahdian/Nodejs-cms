@@ -45,3 +45,16 @@ const upload = multer({
         fileSize : 5 * 1024 * 1024 //max 5 MB
     }
 });
+
+
+// =============================================
+// The main function of uploading photos
+// =============================================
+
+const uploadImage = async(req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}

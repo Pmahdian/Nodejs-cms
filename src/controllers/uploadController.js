@@ -53,6 +53,13 @@ const upload = multer({
 
 const uploadImage = async(req, res) => {
     try {
+        // Check that the user actually uploaded the file
+        if (!req.file) {
+            return res.status(400).json({
+                success : false,
+                message : 'Please select a photo to upload'
+            })
+        }
         
     } catch (error) {
         

@@ -18,6 +18,10 @@ const Post = sequelize.define('Post',{
     category_id : {
         type : DataTypes.INTEGER,
         allowNull : true
+    },
+    image_url :{
+        type : DataTypes.STRING,
+        allowNull : true
     }
 }, 
     {

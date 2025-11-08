@@ -27,6 +27,10 @@ const fileFilter = (req, file, cd) =>{
     if (file.mimtype.startWith('image/')){
         // if it was a photo file, accept it
         cb(null, true);
+
+    }else {
+        // if it wasn't a photo file, returen an error
+        cb(new Error('Only image files are allowed!'), false);
     }
 }
 

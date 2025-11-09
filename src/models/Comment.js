@@ -14,5 +14,11 @@ const Comment = sequelize.define('Comment', {
     post_id : {
         type : DataTypes.INTEGER,
         allowNull : false
-    }
+    } },
+     {
+        tableName : 'comments',
+        timestamps : true,
+        underscored : true
+
+    
 })

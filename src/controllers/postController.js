@@ -22,7 +22,8 @@ const createPost = async (req, res) => {
             title : title,
             content : content,
             user_id : userId,
-            category_id : category_id || null
+            category_id : category_id || null,
+             image_url: image_url || null
         });
 
         //step 5 : send success response with sequelize

@@ -11,5 +11,6 @@ Category.hasMany(Post, {foreignKey : 'category_id'});
 Post.belongsTo(Category, {foreignKey : 'category_id'});
 
 User.hasMany(Comment,{foreignKey : 'user_id'});
+Post.hasMany(Comment,{foreignKey: 'post_id'});
 
 module.exports = { User, Post, Category };

@@ -133,7 +133,7 @@ const getAllPosts = async (req, res) => {
                 total: totalPosts,
                 totalPages: totalPages,
                 hasNext: hasNextPage,
-                hasPrev: hasPrevPage // ✅ تصحیح شد
+                hasPrev: hasPrevPage // ✅ 
             }
         });
 

@@ -11,3 +11,4 @@ const {
 router.post('/',authMiddlewarem, upload.single('image'), uploadImage);
 
 module.exports = router;
+

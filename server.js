@@ -13,7 +13,7 @@ app.use(express.json());
 
 
 //Router
-app.use('/uploads', express.static('uploads'))
+app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 app.use('/api/categories', categoriesRoutes);

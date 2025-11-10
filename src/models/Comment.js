@@ -5,7 +5,10 @@ const { date } = require('joi');
 const Comment = sequelize.define('Comment', {
     content : {
         type : DataTypes.TEXT,
-        allowNull : false
+        allowNull : false,
+        validate : {
+            notEmpty : true
+        }
     },
     user_id : {
         type : DataTypes.INTEGER,
@@ -18,7 +21,11 @@ const Comment = sequelize.define('Comment', {
      {
         tableName : 'comments',
         timestamps : true,
-        underscored : true
+        underscored : true,
+        createdAt : 'created_at',
+        updatedAt : 'updated_at'
 
     
-})
+});
+
+module.exports = Comment;

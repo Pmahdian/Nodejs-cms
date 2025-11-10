@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const { sequelize } = require("../config/sequelize");
-const { date } = require('joi');
+
 
 const Comment = sequelize.define('Comment', {
     content : {

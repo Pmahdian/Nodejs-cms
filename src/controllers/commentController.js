@@ -8,6 +8,7 @@ const createComment = async (req,res) => {
         const { id : post_id } = req.params;
         const user_id = req.user.userId;
         
+        // step 2: Data validation with
         
     } catch (error) {
         

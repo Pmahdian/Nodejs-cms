@@ -96,5 +96,6 @@ const getPostComments = async (req, res) => {
 
 
 module.exports = { 
-    createComment
+    createComment,
+    getPostComments
 }

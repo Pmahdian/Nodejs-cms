@@ -71,6 +71,14 @@ const getPostComments = async (req, res) => {
             }
         })
 
+        //send response
+        res.status(200).json({
+            success : true,
+            message : 'Comments received successfully',
+            data : comments,
+            count : comments.length
+        });
+
 
         
     } catch (error) {

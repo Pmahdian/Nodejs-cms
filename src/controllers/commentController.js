@@ -54,6 +54,16 @@ const createComment = async (req,res) => {
         });
         
     }
+};
+
+
+const getPostComments = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+
 }
 
 

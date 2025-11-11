@@ -12,4 +12,7 @@ router.post('/post/:id/comments',
     authMiddleware,
     validateRequest(createCommentSchema),
     createComment
-)
+);
+
+
+module.exports = router;

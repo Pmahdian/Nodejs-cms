@@ -82,6 +82,12 @@ const getPostComments = async (req, res) => {
 
         
     } catch (error) {
+         // Error handling
+        console.error('Get Comment error:', error);
+        res.status(500).json({
+            success : false,
+            error : 'server error'
+        });
         
     }
 

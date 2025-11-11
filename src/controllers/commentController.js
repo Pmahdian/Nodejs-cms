@@ -35,6 +35,13 @@ const createComment = async (req,res) => {
             }
         });
 
+        //step 5 : response
+        res.status(201).json({
+            success : true,
+            message : 'Comment added successfully!',
+            data : commentWithUser
+        });
+
         
         
         

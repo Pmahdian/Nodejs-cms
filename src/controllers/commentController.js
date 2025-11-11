@@ -27,6 +27,14 @@ const createComment = async (req,res) => {
             post_id : post_id
         });
 
+        // step 4 : Loading user information
+        const commentWithUser = await Comment.findByPk(comment.id,{
+            include : {
+                model : User,
+                attributes : ['id', 'username']
+            }
+        });
+
         
         
         

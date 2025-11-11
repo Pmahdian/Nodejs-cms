@@ -8,7 +8,9 @@ const createComment = async (req,res) => {
         const { id : post_id } = req.params;
         const user_id = req.user.userId;
         
-        // step 2: Data validation with
+        // step 2: Data validation with Joi : there is no need to validation here, i validate data in route
+        
+        
         
     } catch (error) {
         

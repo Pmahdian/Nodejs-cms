@@ -1,6 +1,6 @@
-const { Model, where } = require('sequelize');
+
 const { Post, User, Category } = require('../models/associations');
-const { sequelize } = require('../config/sequelize');
+
 
 const createPost = async (req, res) => {
     try {

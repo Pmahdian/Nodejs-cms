@@ -9,7 +9,16 @@ const createComment = async (req,res) => {
         const user_id = req.user.userId;
         
         // step 2: Data validation with Joi : there is no need to validation here, i validate data in route
-        
+
+
+        //step 2 :  check for the existence of the post
+        const post = await Post.findByPk(post_id);
+        if (!post) {
+            return res.status(404).json({
+                success : false,
+                message : 'The desired post was not found'
+            });
+        };
         
         
     } catch (error) {

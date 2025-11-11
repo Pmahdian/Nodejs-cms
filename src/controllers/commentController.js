@@ -59,6 +59,9 @@ const createComment = async (req,res) => {
 
 const getPostComments = async (req, res) => {
     try {
+        const {id : post_id} = req.params;
+
+        
         
     } catch (error) {
         

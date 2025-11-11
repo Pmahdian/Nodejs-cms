@@ -61,7 +61,17 @@ const getPostComments = async (req, res) => {
     try {
         const {id : post_id} = req.params;
 
-        
+        // Get all comments on this post along with user information
+        const comments = await Comment.findAll({
+            where : {post_id : post_id},
+            include : {
+                model : User,
+                attributes : ['id', 'username'],
+                order :[['created_at', 'DESC']] //newest comment first
+            }
+        })
+
+
         
     } catch (error) {
         

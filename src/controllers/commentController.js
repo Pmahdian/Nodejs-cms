@@ -20,6 +20,15 @@ const createComment = async (req,res) => {
             });
         };
         
+        // step 3 : create comment
+        const comment = await Comment.create({
+            content : content,
+            user_id : user_id,
+            post_id : post_id
+        });
+
+        
+        
         
     } catch (error) {
         

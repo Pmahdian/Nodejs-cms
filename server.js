@@ -5,7 +5,8 @@ const postRoutes = require('./src/routes/posts');
 const authRoutes = require('./src/routes/auth');
 const categoriesRoutes = require('./src/routes/categories');
 const userRoutes = require('./src/routes/users');
-const uploadRoutes = require('./routes/upload');
+const uploadRoutes = require('./src/routes/upload');
+const commentRoutes = require('./src/routes/comments')
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use('/api/posts', postRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/upload', uploadRoutes);
+app.use('/api', commentRoutes)
 
 app.get('/', (req,res)=>{
     res.send('hello...')

@@ -96,6 +96,10 @@ const getPostComments = async (req, res) => {
 
 const deleteComment = async (req, res) => {
     try {
+        // step 1 = get data from body
+        const {id : comment_id} = req.params;
+        const user_id = req.user.userId;
+
         
     } catch (error) {
         

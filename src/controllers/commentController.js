@@ -94,6 +94,15 @@ const getPostComments = async (req, res) => {
 }
 
 
+const deleteComment = async (req, res) => {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
+
+
 
 module.exports = { 
     createComment,

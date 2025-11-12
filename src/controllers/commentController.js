@@ -100,6 +100,9 @@ const deleteComment = async (req, res) => {
         const {id : comment_id} = req.params;
         const user_id = req.user.userId;
 
+        //step 2 : finding comment
+        const comment = await Comment.findByPk(comment_id);
+
         
     } catch (error) {
         

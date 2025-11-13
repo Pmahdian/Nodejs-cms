@@ -120,6 +120,12 @@ const deleteComment = async (req, res) => {
         //step 4 : Delete comment
         await comment.destroy();
 
+        //step 5 : send response
+        res.status(200).json({
+            success : false,
+            message : 'comment deleted successfullt.'
+        })
+
         
     } catch (error) {
         

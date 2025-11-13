@@ -18,6 +18,9 @@ router.post('/post/:id/comments',
 // GET /api/posts/:id/comments
 router.get('/post/:id/comments', getPostComment);
 
+// DELETE /api/comments/:id 
+router.delete('/comments/:id', authMiddleware, deleteComment);
+
 
 
 module.exports = router;

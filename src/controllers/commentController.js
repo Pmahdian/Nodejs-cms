@@ -102,6 +102,12 @@ const deleteComment = async (req, res) => {
 
         //step 2 : finding comment
         const comment = await Comment.findByPk(comment_id);
+        if (!comment) {
+            return res.status(404).json({
+                success : false,
+                message : 'Comment not found!'
+            });
+        }
 
         
     } catch (error) {

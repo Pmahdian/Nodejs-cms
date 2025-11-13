@@ -57,7 +57,7 @@ const createComment = async (req,res) => {
 };
 
 
-const getPostComments = async (req, res) => {
+const getPostComment = async (req, res) => {
     try {
         const {id : post_id} = req.params;
 
@@ -142,5 +142,6 @@ const deleteComment = async (req, res) => {
 
 module.exports = { 
     createComment,
-    getPostComments
+    getPostComment,
+    deleteComment
 }

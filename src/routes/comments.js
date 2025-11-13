@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router;
-const { createComment, getPostco } = require('../controllers/commentController');
+const {  createComment,
+    getPostComment,
+    deleteComment } = require('../controllers/commentController');
 
 const authMiddleware = require('../middleware/authMiddleware');
 const validateRequest = require('../middleware/validationMiddleware');
@@ -13,6 +15,8 @@ router.post('/post/:id/comments',
     validateRequest(createCommentSchema),
     createComment
 );
+
+
 
 
 module.exports = router;

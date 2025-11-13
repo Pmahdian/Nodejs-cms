@@ -116,6 +116,9 @@ const deleteComment = async (req, res) => {
                 message : 'You do not have permission to delete this comment.'
             })
         }
+        
+        //step 4 : Delete comment
+        await comment.destroy();
 
         
     } catch (error) {

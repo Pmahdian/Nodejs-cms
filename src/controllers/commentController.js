@@ -128,6 +128,12 @@ const deleteComment = async (req, res) => {
 
         
     } catch (error) {
+        // step 6 : Error handling
+        console.error('Delete comment error:', error)
+        res.status(500).json({
+            success : false,
+            message : 'Delete comment error'
+        });
         
     }
 }

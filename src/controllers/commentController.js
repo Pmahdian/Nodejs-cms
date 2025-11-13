@@ -109,6 +109,14 @@ const deleteComment = async (req, res) => {
             });
         }
 
+        // step 3 : Ownership check: Only the comment owner can delete it
+        if (comment.user_id !== user_id){
+            return res.status(403).json({
+                success : false,
+                message : 'You do not have permission to delete this comment.'
+            })
+        }
+
         
     } catch (error) {
         

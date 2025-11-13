@@ -15,7 +15,8 @@ router.post('/post/:id/comments',
     validateRequest(createCommentSchema),
     createComment
 );
-
+// GET /api/posts/:id/comments
+router.get('/post/:id/comments', getPostComment);
 
 
 

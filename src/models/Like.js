@@ -22,3 +22,5 @@ const Like = sequilize.define('Like', {
     createdAt: 'created_at',
     updatedAt: 'updated_at'
 });
+
+module.exports = Like;

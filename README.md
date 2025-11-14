@@ -191,3 +191,50 @@ This project is open source and available under the [MIT License](LICENSE).
 
 
 
+
+```
+Nodejs-cms
+├─ LICENSE
+├─ README.md
+├─ cms-Banner.png
+├─ package-lock.json
+├─ package.json
+├─ server.js
+├─ src
+│  ├─ README.md
+│  ├─ config
+│  │  ├─ config.json
+│  │  └─ sequelize.js
+│  ├─ controllers
+│  │  ├─ authController.js
+│  │  ├─ categoryController.js
+│  │  ├─ commentController.js
+│  │  ├─ postController.js
+│  │  ├─ testController.js
+│  │  ├─ uploadController.js
+│  │  └─ userController.js
+│  ├─ middleware
+│  │  ├─ authMiddleware.js
+│  │  └─ validationMiddleware.js
+│  ├─ models
+│  │  ├─ Category.js
+│  │  ├─ Comment.js
+│  │  ├─ Post.js
+│  │  ├─ User.js
+│  │  └─ associations.js
+│  ├─ routes
+│  │  ├─ auth.js
+│  │  ├─ categories.js
+│  │  ├─ comments.js
+│  │  ├─ posts.js
+│  │  ├─ upload.js
+│  │  └─ users.js
+│  └─ validators
+│     ├─ authValidator.js
+│     ├─ categoryValidator.js
+│     ├─ commentValidator.js
+│     ├─ postValidator.js
+│     └─ userValidator.js
+└─ sync-comments.js
+
+```

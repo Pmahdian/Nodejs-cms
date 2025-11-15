@@ -2,6 +2,7 @@ const User = require('./User');
 const Post = require('./Post');
 const Category = require('./Category');
 const Comment = require('./Comment')
+const Like = require('./Like');
 
 User.hasMany(Post, {foreignKey : 'user_id'});
 Post.belongsTo(User, {foreignKey : 'user_id'});

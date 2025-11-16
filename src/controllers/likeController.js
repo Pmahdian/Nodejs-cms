@@ -98,6 +98,12 @@ const unlikePost = async (req, res) => {
         });
 
     } catch (error) {
+        // Error handling
+        console.error('Unliked post error:', error);
+        res.status(500).json({
+            success : false,
+            message : 'Server error'
+        })
         
     }
 }

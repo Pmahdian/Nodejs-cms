@@ -23,6 +23,7 @@ app.use('/api/categories', categoriesRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api', commentRoutes)
+app.use('/api', likeRoutes);
 
 app.get('/', (req,res)=>{
     res.send('hello...')

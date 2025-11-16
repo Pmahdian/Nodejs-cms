@@ -1,0 +1,1 @@
+const { Like, Post, User } = require('../models/associations');

@@ -12,11 +12,10 @@ router.use(authenticate);
 
 //POST - like
 router.post('/posts/:id/like', likePost);
-
-
-
-//POST - unlike
+//DELETE - unlike
 router.delete('/posts/:id/like', unlikePost);
+
+//Post
 
 
 

@@ -123,6 +123,21 @@ const bookmarkPost = async (req, res) =>{
                 message : 'The desired post was not found!'
             });
         }
+
+        // step 3 : checking duplicate bookmarks
+        const existingBookmark = await Like.findOne({
+            where : {
+                user_id : user_id,
+                post_id : post_id,
+                type: 'bookmark'
+            }
+        });
+        if (existingBookmark){
+            return res.status(400).json({
+                success : false,
+                message : 'You have already bookmarked this post!'
+            });
+        }
         
         
     } catch (error) {

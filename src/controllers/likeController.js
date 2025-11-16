@@ -45,8 +45,14 @@ const likePost = async (req, res) => {
             message : 'Post liked successfully',
             data : like
         })
-        
+
     } catch (error) {
+        // Error handling
+        console.error('Like post error:', error);
+        res.status(500).json({
+            success : false,
+            error : 'Server error'
+        })
         
     }
 

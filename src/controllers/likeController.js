@@ -107,3 +107,9 @@ const unlikePost = async (req, res) => {
         
     }
 }
+
+
+module.exports = {
+    likePost,
+    unlikePost
+}

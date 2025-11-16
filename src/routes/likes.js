@@ -18,7 +18,8 @@ router.delete('/posts/:id/like', unlikePost);
 //POST - bookmark
 router.post('/posts/:id/bookmark', bookmarkPost);
 
-
+//DELETE - unbookmark
+router.delete('/posts/:id/bookmark', unbookmarkPost);
 
 
 

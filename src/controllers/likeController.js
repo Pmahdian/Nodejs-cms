@@ -138,6 +138,15 @@ const bookmarkPost = async (req, res) =>{
                 message : 'You have already bookmarked this post!'
             });
         }
+
+        // step 4 : create bookmark
+        const bookmark = await Like.create({
+            user_id : user_id,
+            post_id : post_id,
+            type : 'bookmark'
+        });
+
+        
         
         
     } catch (error) {

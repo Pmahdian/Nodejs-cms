@@ -15,3 +15,5 @@ router.post('/posts/:id/like', likePost);
 
 //POST - unlike
 router.post('/posts/:id/like', unlikePost);
+
+module.exports = router;

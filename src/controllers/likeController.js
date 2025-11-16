@@ -153,15 +153,18 @@ const bookmarkPost = async (req, res) =>{
             data : bookmark
         });
         
-
-
-        
         
     } catch (error) {
+        // error handling
+        console.error('Bookmark post error:', error);
+        res.status(500).json({
+            success : false,
+            error : 'Server error'
+        });
         
     }
     
-}
+};
 
 
 

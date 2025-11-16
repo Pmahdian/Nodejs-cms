@@ -114,6 +114,16 @@ const bookmarkPost = async (req, res) =>{
         // step 1 : get data
         const { id : post_id } = req.params;
         const user_id = req.user.userId;
+
+        // step 2 : checking for existance of the post
+        const post = await Post.findByPk(post_id);
+        if (!post) {
+            return res.status(404).json({
+                success : false,
+                message : 'The desired post was not found!'
+            });
+        }
+        
         
     } catch (error) {
         

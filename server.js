@@ -7,6 +7,7 @@ const categoriesRoutes = require('./src/routes/categories');
 const userRoutes = require('./src/routes/users');
 const uploadRoutes = require('./src/routes/upload');
 const commentRoutes = require('./src/routes/comments')
+const likeRoutes= require('./src/routes/likes');
 
 const app = express();
 

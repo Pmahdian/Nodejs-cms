@@ -80,6 +80,14 @@ const unlikePost = async (req, res) => {
             });
         }
 
+        // step 3 : Ownership checked - only the owner of the like can unlike
+        if (like.user_id !== user_id){
+            return res.status(403).json({
+                success : false,
+                message : 'You do not have permission to unlike this post.'
+            });
+        }
+
 
         
     } catch (error) {

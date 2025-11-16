@@ -99,7 +99,7 @@ const unlikePost = async (req, res) => {
 
     } catch (error) {
         // Error handling
-        console.error('Unliked post error:', error);
+        console.error('Unlike post error:', error);
         res.status(500).json({
             success : false,
             message : 'Server error'
@@ -167,6 +167,55 @@ const bookmarkPost = async (req, res) =>{
 };
 
 
+const unbookmarkPost = async (req, res) => {
+    try {
+        // step 1 : get data
+        const { id : post_id } = req.params;
+        const user_id = req.user.userId;
+
+        // step 2 : Finding llikes
+        const bookmark = await Like.findOne({
+            where : {
+                user_id : user_id,
+                post_id : post_id,
+                type : 'bookmark'
+            }
+        });
+
+        if (!bookmark) {
+            return res.status(404).json({
+                success : false,
+                message : 'bookmark not found!'
+            });
+        }
+
+        // step 3 : Ownership checked - only the owner of the bookmark can unbookmark
+        if (bookmark.user_id !== user_id){
+            return res.status(403).json({
+                success : false,
+                message : 'You do not have permission to unbookmark this post.'
+            });
+        }
+
+        // step 4 : delete like
+        await bookmark.destroy();
+
+        // step 5 : send response
+        res.status(200).json({
+            success : false,
+            message : 'Post unbookmarked successfully.'
+        });
+
+    } catch (error) {
+        // Error handling
+        console.error('Unbookmark post error:', error);
+        res.status(500).json({
+            success : false,
+            message : 'Server error'
+        })
+        
+    }
+}
 
 
 
@@ -174,5 +223,5 @@ const bookmarkPost = async (req, res) =>{
 module.exports = {
     likePost,
     unlikePost,
-    bookmarkPost
+    bookmarkPost,
 }

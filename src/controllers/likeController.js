@@ -146,7 +146,15 @@ const bookmarkPost = async (req, res) =>{
             type : 'bookmark'
         });
 
+        // step 5 : send response
+        res.status(201).json({
+            success : true,
+            message : 'Post bookmarked successfully!',
+            data : bookmark
+        });
         
+
+
         
         
     } catch (error) {

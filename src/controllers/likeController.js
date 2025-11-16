@@ -88,6 +88,9 @@ const unlikePost = async (req, res) => {
             });
         }
 
+        // step 4 : delete like
+        await llike.destroy();
+
 
         
     } catch (error) {

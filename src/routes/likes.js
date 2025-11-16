@@ -7,3 +7,8 @@ const {
 const { authenticate } = require('../middleware/authMiddleware');
 
 router.use(authenticate);
+
+//POST - like
+router.post('/posts/:id/like', likePost);
+
+

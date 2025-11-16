@@ -111,6 +111,9 @@ const unlikePost = async (req, res) => {
 
 const bookmarkPost = async (req, res) =>{
     try {
+        // step 1 : get data
+        const { id : post_id } = req.params;
+        const user_id = req.user.userId;
         
     } catch (error) {
         

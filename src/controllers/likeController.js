@@ -173,5 +173,6 @@ const bookmarkPost = async (req, res) =>{
 
 module.exports = {
     likePost,
-    unlikePost
+    unlikePost,
+    bookmarkPost
 }

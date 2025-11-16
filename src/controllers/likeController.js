@@ -64,7 +64,23 @@ const unlikePost = async (req, res) => {
         const { id : post_id } = req.params;
         const user_id = req.user.userId;
 
-        
+        // step 2 : Finding llikes
+        const like = await Like.findOne({
+            where : {
+                user_id : user_id,
+                post_id : post_id,
+                type : 'like'
+            }
+        });
+
+        if (!like) {
+            return res.status(404).json({
+                success : false,
+                message : 'Like not found!'
+            });
+        }
+
+
         
     } catch (error) {
         

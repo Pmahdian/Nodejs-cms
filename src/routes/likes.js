@@ -12,3 +12,6 @@ router.use(authenticate);
 router.post('/posts/:id/like', likePost);
 
 
+
+//POST - unlike
+router.post('/posts/:id/like', unlikePost);

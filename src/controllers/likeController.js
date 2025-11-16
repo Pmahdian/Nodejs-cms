@@ -109,6 +109,20 @@ const unlikePost = async (req, res) => {
 }
 
 
+const bookmarkPost = async (req, res) =>{
+    try {
+        
+    } catch (error) {
+        
+    }
+    
+}
+
+
+
+
+
+
 module.exports = {
     likePost,
     unlikePost

@@ -29,4 +29,14 @@ const likePost = async (req, res) => {
             message : 'You have already liked this post!'
         });
     }
+
+    // step 4 : create like
+    const like = await Like.create({
+        user_id : user_id,
+        post_id : post_id,
+        type : 'like'
+    });
+
+
+
 }

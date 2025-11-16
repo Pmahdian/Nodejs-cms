@@ -9,9 +9,24 @@ const likePost = async (req, res) => {
     // step 2 : checking for existance of the post
     const post = await Post.findByPk(post_id);
     if (!post) {
-        res.status(404).json({
+        return res.status(404).json({
             success : false,
             message : 'The desired post was not found!'
+        });
+    }
+
+    // step 3 : checking duplicate likes
+    const existingLike = await Like.findOne({
+        where : {
+            user_id : user_id,
+            post_id : post_id,
+            type: 'like'
+        }
+    });
+    if (existingLike){
+        return res.status(400).json({
+            success : false,
+            message : 'You have already liked this post!'
         });
     }
 }

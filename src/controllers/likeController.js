@@ -91,8 +91,12 @@ const unlikePost = async (req, res) => {
         // step 4 : delete like
         await llike.destroy();
 
+        // step 5 : send response
+        res.status(200).json({
+            success : false,
+            message : 'Post unliked successfully.'
+        });
 
-        
     } catch (error) {
         
     }

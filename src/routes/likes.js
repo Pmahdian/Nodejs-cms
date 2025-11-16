@@ -16,7 +16,7 @@ router.post('/posts/:id/like', likePost);
 
 
 //POST - unlike
-router.post('/posts/:id/like', unlikePost);
+router.delete('/posts/:id/like', unlikePost);
 
 
 

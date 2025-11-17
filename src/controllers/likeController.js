@@ -263,10 +263,16 @@ const getUserLike = async (req, res) => {
         });
         
     } catch (error) {
+        // error handling
+        console.error('Get user likes error:', error);
+        res.status(500).json({
+            success : false,
+            error : 'Server error'
+        });
         
     }
 
-}
+};
 
 
 module.exports = {

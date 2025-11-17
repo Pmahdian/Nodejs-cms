@@ -6,9 +6,9 @@ const {
     bookmarkPost,
     unbookmarkPost
 } = require('../controllers/likeController');
-const { authenticate } = require('../middleware/authMiddleware');
+const { authMiddleware } = require('../middleware/authMiddleware');
 
-router.use(authenticate);
+router.use(authMiddleware);
 
 //POST - like
 router.post('/posts/:id/like', likePost);

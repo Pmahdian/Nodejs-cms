@@ -101,6 +101,22 @@ const getAllPosts = async (req, res) => {
         const postsWithStats = await Promise.all(
             posts.map(async (post) =>{
                 const { Like } = require('../models/associations');
+
+                // Likes count
+                const likeCount = await Like.count({
+                    where : {
+                        post_id : post_id,
+                        type : 'like'
+                    }
+                });
+
+                // bookmarks count
+                const bookmarkCount =  await Like.count({
+                    where : {
+                        post_id : post_id,
+                        type : 'bookmark'
+                    }
+                });
             })
         )
 

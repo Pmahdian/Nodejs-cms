@@ -4,7 +4,9 @@ const {
     likePost,
     unlikePost,
     bookmarkPost,
-    unbookmarkPost
+    unbookmarkPost,
+    getUserLikes,
+    getUserBookmarks
 } = require('../controllers/likeController');
 const authMiddleware = require('../middleware/authMiddleware');
 

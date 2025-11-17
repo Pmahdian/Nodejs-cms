@@ -219,7 +219,7 @@ const unbookmarkPost = async (req, res) => {
 }
 
 // Function to get user's liked posts
-const getUserLike = async (req, res) => {
+const getUserLikes = async (req, res) => {
     try {
         // step 1 : get user id
         const user_id = req.user.userId;
@@ -274,11 +274,68 @@ const getUserLike = async (req, res) => {
 
 };
 
+// Function to get user's bookmarked posts
+const getUserBookmarks = async (req, res) => {
+    try {
+        // step 1 : get user id
+        const user_id = req.user.userId;
+
+        // step 2 : find all user likes
+        const bookmarks = await Like.findAll({
+            where : {
+                user_id : user_id,
+                type : 'bookmark',
+            },
+            include : [
+                {
+                    model : Post,
+                    as : 'post',
+                    include : [
+                        {
+                            model : User,
+                            as : 'author',
+                            attributes : ['id', 'username']
+                        },
+                        {
+                            model : Category,
+                            as : 'category',
+                            attributes : ['id', 'name']
+                        }
+                    ]
+                }
+            ],
+            order : [['created_at', 'DESC']]
+        });
+
+        // step 3 : convert to the appropriate format
+        const bookmarkedPosts = bookmarks.map(bookmark => bookmark.post);
+
+        // step 4 : send response
+        res.status(200).json({
+            success : true,
+            message : 'Bookmarked posts retrieved successfully',
+            data : bookmarkedPosts,
+            count : bookmarkedPosts.length
+        });
+        
+    } catch (error) {
+        // error handling
+        console.error('Get user bookmarks error:', error);
+        res.status(500).json({
+            success : false,
+            error : 'Server error'
+        });
+        
+    }
+
+};
+
 
 module.exports = {
     likePost,
     unlikePost,
     bookmarkPost,
     unbookmarkPost, 
-    getUserLike
+    getUserLikes,
+    getUserBookmarks
 }

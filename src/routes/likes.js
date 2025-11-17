@@ -23,6 +23,12 @@ router.post('/posts/:id/bookmark', authMiddleware, bookmarkPost);
 //DELETE - unbookmark
 router.delete('/posts/:id/bookmark', authMiddleware, unbookmarkPost);
 
+// GET Liked Posts
+router.get('/users/me/likes', authMiddleware, getUserLikes);
+
+
+
+
 
 
 module.exports = router;

@@ -248,7 +248,12 @@ const getUserLike = async (req, res) => {
                 }
             ],
             order : [['created_at', 'DESC']]
-        })
+        });
+
+        // step 3 : convert to the appropriate format
+        const likedPosts = likes.map(like => like.post);
+
+        
         
     } catch (error) {
         

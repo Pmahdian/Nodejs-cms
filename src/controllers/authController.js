@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const { Op } = require('sequelize');
 
 
 
@@ -17,7 +18,7 @@ const register = async (req,res)=>{
        //step 3 : Checking for user existence with Sequelize (refactor with sequelize)
        const existingUser = await User.findOne({
         where : {
-            $or :[
+            [Op.or] :[
                 { email : email },
                 { username : username }
             ]

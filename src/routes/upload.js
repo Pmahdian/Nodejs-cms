@@ -5,7 +5,7 @@ const { upload, uploadImage } = require('../controllers/uploadController');
 
 
 //POST /api/upload
-router.post('/',authMiddlewarem, upload.single('image'), uploadImage);
+router.post('/',authMiddleware, upload.single('image'), uploadImage);
 
 module.exports = router;
 

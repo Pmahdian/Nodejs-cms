@@ -279,5 +279,6 @@ module.exports = {
     likePost,
     unlikePost,
     bookmarkPost,
-    unbookmarkPost
+    unbookmarkPost, 
+    getUserLike
 }

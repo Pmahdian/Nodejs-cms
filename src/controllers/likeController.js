@@ -1,4 +1,4 @@
-const { Like, Post, User } = require('../models/associations');
+const { Like, Post, User, Category } = require('../models/associations');
 
 const likePost = async (req, res) => {
     try {
@@ -223,7 +223,32 @@ const getUserLike = async (req, res) => {
         // step 1 : get user id
         const user_id = req.user.userId;
 
-        
+        // step 2 : find all user likes
+        const likes = await Like.findAll({
+            where : {
+                user_id : user_id,
+                type : 'like',
+            },
+            include : [
+                {
+                    model : Post,
+                    as : 'post',
+                    include : [
+                        {
+                            model : User,
+                            as : 'author',
+                            attributes : ['id', 'username']
+                        },
+                        {
+                            model : Category,
+                            as : 'category',
+                            attributes : ['id', 'name']
+                        }
+                    ]
+                }
+            ],
+            order : [['created_at', 'DESC']]
+        })
         
     } catch (error) {
         

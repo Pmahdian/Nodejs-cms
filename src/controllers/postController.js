@@ -155,16 +155,6 @@ const getAllPosts = async (req, res) => {
             })
         )
 
-
-
-
-
-
-
-
-
-
-
         // step 5 : Calculating pagination information
         const totalPosts = await Post.count({
             where: whereConditions 

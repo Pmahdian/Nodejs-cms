@@ -98,7 +98,11 @@ const getAllPosts = async (req, res) => {
         });
 
         // New step : Get like and bookmark statistics for each post
-        const postsWithStats = await Promise.all()
+        const postsWithStats = await Promise.all(
+            posts.map(async (post) =>{
+                const { Like } = require('../models/associations');
+            })
+        )
 
 
 

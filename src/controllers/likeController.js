@@ -233,16 +233,16 @@ const getUserLikes = async (req, res) => {
             include : [
                 {
                     model : Post,
-                    as : 'post',
+                    // as : 'post',
                     include : [
                         {
                             model : User,
-                            as : 'author',
+                            // as : 'author',
                             attributes : ['id', 'username']
                         },
                         {
                             model : Category,
-                            as : 'category',
+                            // as : 'category',
                             attributes : ['id', 'name']
                         }
                     ]
@@ -289,16 +289,16 @@ const getUserBookmarks = async (req, res) => {
             include : [
                 {
                     model : Post,
-                    as : 'post',
+                    // as : 'post',
                     include : [
                         {
                             model : User,
-                            as : 'author',
+                            // as : 'author',
                             attributes : ['id', 'username']
                         },
                         {
                             model : Category,
-                            as : 'category',
+                            // as : 'category',
                             attributes : ['id', 'name']
                         }
                     ]

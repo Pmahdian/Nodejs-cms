@@ -132,6 +132,14 @@ const getUserStats = async (req, res) => {
                 type : 'like'
             }
         })
+        // Number of user bookmarks
+        const totalBookmarks = await Like.count({
+            where: { 
+                user_id: userId,
+                type: 'bookmark'
+            }
+        });
+
 
 
 

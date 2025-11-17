@@ -8,18 +8,18 @@ const {
 } = require('../controllers/likeController');
 const { authMiddleware } = require('../middleware/authMiddleware');
 
-router.use(authMiddleware);
+
 
 //POST - like
-router.post('/posts/:id/like', likePost);
+router.post('/posts/:id/like', authMiddleware, likePost);
 //DELETE - unlike
-router.delete('/posts/:id/like', unlikePost);
+router.delete('/posts/:id/like', authMiddleware, unlikePost);
 
 //POST - bookmark
-router.post('/posts/:id/bookmark', bookmarkPost);
+router.post('/posts/:id/bookmark', authMiddleware, bookmarkPost);
 
 //DELETE - unbookmark
-router.delete('/posts/:id/bookmark', unbookmarkPost);
+router.delete('/posts/:id/bookmark', authMiddleware, unbookmarkPost);
 
 
 

@@ -117,6 +117,20 @@ const getAllPosts = async (req, res) => {
                         type : 'bookmark'
                     }
                 });
+
+                // Did the current user like this post?
+                let isLiked = false;
+                if (currentUserId) {
+                    const userLike = await Like.findOne({
+                        where : {
+                            user_id : currentUserId,
+                            post_id : post_id,
+                            type : 'like'
+                        }
+                    });
+                    isLiked = !!userLike
+                }
+
             })
         )
 

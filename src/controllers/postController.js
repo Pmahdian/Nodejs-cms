@@ -97,6 +97,19 @@ const getAllPosts = async (req, res) => {
             offset: offset         // start from which record
         });
 
+        // New step : Get like and bookmark statistics for each post
+        const postsWithStats = await Promise.all()
+
+
+
+
+
+
+
+
+
+
+
         // step 5 : Calculating pagination information
         const totalPosts = await Post.count({
             where: whereConditions 

@@ -1,4 +1,3 @@
-const { destroy } = require('../config/database');
 const { Category } = require('../models/associations');
 const { Op, where } = require('sequelize');
 

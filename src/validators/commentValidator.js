@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const createCommentSChema = Joi.object({
+const createCommentSchema = Joi.object({
     content : Joi.string()
     .min(1)
     .max(1000)

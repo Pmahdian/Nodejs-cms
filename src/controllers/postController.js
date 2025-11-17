@@ -130,6 +130,27 @@ const getAllPosts = async (req, res) => {
                     });
                     isLiked = !!userLike
                 }
+                // Did the current user bookmark this post?
+                let isBookmarked = false;
+                if (currentUserId) {
+                    const userBookmark = await Like.findOne({
+                        where: { 
+                            user_id: currentUserId, 
+                            post_id: post.id, 
+                            type: 'bookmark' 
+                        }
+                    });
+                    isBookmarked = !!userBookmark;
+                }
+
+                // Return the post with new statistics
+                return {
+                    ...post.toJSON(),
+                    like_count: likeCount,
+                    bookmark_count: bookmarkCount,
+                    is_liked: isLiked,
+                    is_bookmarked: isBookmarked
+                };
 
             })
         )

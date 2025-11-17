@@ -115,7 +115,10 @@ const getUserStats = async (req, res) => {
         // step 1 : Get user id
         const userId = req.user.userId;
 
-        
+        // step 2 : get models
+        const { Post, Like, Comment } = require('../models/associations');
+
+
         
     } catch (error) {
         

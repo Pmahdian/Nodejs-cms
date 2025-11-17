@@ -17,7 +17,7 @@ const registerSchema = Joi.object(
         email : Joi.string()
         .email()
         .required()
-        .message({
+        .messages({
             'string.email' : 'Please provide a valid email address.',
             'any.required' : 'Email is required'
         }),

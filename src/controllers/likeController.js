@@ -202,7 +202,7 @@ const unbookmarkPost = async (req, res) => {
 
         // step 5 : send response
         res.status(200).json({
-            success : false,
+            success : true,
             message : 'Post unbookmarked successfully.'
         });
 

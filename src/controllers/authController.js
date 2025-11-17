@@ -61,11 +61,11 @@ const register = async (req,res)=>{
 const login = async(req,res)=>{
     try {
         //step 1 : get values from body
-        const {username, email, password} = req.body;
+        const {email, password} = req.body;
 
         //step 2 : validation values
-        if(!username || !email || !password) 
-            return res.status(400).json({error : 'All fields are required!'})
+        if(!email || !password) 
+            return res.status(400).json({error : 'Email and password are required!'})
 
         //step 3 : find user with email with sequelize (refactoring)
         const foundUser = await User.findOne(

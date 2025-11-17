@@ -26,7 +26,8 @@ router.delete('/posts/:id/bookmark', authMiddleware, unbookmarkPost);
 // GET Liked Posts
 router.get('/users/me/likes', authMiddleware, getUserLikes);
 
-
+// Get Bookmarked Posts
+router.get('/users/me/bookmarks', authMiddleware, getUserBookmarks);
 
 
 

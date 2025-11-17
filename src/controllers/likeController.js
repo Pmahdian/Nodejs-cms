@@ -1,4 +1,5 @@
 const { Like, Post, User, Category } = require('../models/associations');
+const { message } = require('../validators/userValidator');
 
 const likePost = async (req, res) => {
     try {
@@ -253,7 +254,13 @@ const getUserLike = async (req, res) => {
         // step 3 : convert to the appropriate format
         const likedPosts = likes.map(like => like.post);
 
-        
+        // step 4 : send response
+        res.status(200).json({
+            success : true,
+            message : 'Liked posts retrieved successfully',
+            data : likedPosts,
+            count : likedPosts.length
+        });
         
     } catch (error) {
         

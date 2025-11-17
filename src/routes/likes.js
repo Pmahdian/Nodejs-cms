@@ -6,7 +6,7 @@ const {
     bookmarkPost,
     unbookmarkPost
 } = require('../controllers/likeController');
-const { authMiddleware } = require('../middleware/authMiddleware');
+const authMiddleware = require('../middleware/authMiddleware');
 
 
 

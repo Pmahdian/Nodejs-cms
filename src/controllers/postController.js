@@ -52,6 +52,7 @@ const getAllPosts = async (req, res) => {
     try {
         // step 1 : get parameters from req.query
         const { search, category, page = 1, limit = 10 } = req.query;
+        const currentUserId = req.user?.userId; //Get the current User ID (if logged in)
 
         // step 2 : where conditions 
         const whereConditions = {}; // An empty object for conditions

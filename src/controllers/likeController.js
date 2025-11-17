@@ -217,6 +217,11 @@ const unbookmarkPost = async (req, res) => {
     }
 }
 
+// Function to get user's liked posts
+const getUserLike = async (req, res) => {
+
+}
+
 
 module.exports = {
     likePost,

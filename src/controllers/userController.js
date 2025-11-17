@@ -125,6 +125,14 @@ const getUserStats = async (req, res) => {
             where : { user_id : userId }
         });
 
+        // Number of likes given by the user
+        const totalLikes = await Like.count({
+            where : {
+                user_id : userId,
+                type : 'like'
+            }
+        })
+
 
 
         

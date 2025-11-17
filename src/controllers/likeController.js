@@ -219,6 +219,15 @@ const unbookmarkPost = async (req, res) => {
 
 // Function to get user's liked posts
 const getUserLike = async (req, res) => {
+    try {
+        // step 1 : get user id
+        const user_id = req.user.userId;
+
+        
+        
+    } catch (error) {
+        
+    }
 
 }
 

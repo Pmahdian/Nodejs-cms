@@ -118,6 +118,14 @@ const getUserStats = async (req, res) => {
         // step 2 : get models
         const { Post, Like, Comment } = require('../models/associations');
 
+        // step 3 : getting statistics from the database
+
+        // Number of user posts
+        const totalPosts = await Post.count({
+            where : { user_id : userId }
+        });
+
+
 
         
     } catch (error) {

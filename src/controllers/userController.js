@@ -110,4 +110,22 @@ const updateProfile = async (req, res) => {
         )}
     };
 
+const getUserStats = async (req, res) => {
+    try {
+        // step 1 : Get user id
+        const userId = req.user.userId;
+
+        
+        
+    } catch (error) {
+        
+    }
+}
+
+
+
+
+
+
+
 module.exports = {getProfile, updateProfile};

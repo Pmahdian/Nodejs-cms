@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
-const { sequilize } = require('../config/sequelize');
+const { sequelize } = require("../config/sequelize");
 
-const Like = sequilize.define('Like', {
+const Like = sequelize.define('Like', {
     user_id : {
        type: DataTypes.INTEGER,
         allowNull: false 

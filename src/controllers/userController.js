@@ -190,4 +190,4 @@ const getUserStats = async (req, res) => {
 
 
 
-module.exports = {getProfile, updateProfile};
+module.exports = {getProfile, updateProfile, getUserStats};

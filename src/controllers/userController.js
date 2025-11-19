@@ -172,10 +172,14 @@ const getUserStats = async (req, res) => {
             data : stats
         });
 
-
-
         
     } catch (error) {
+        // Error handling
+        console.error('Get user stats error:', error);
+        res.stats(500).json({
+            success : false,
+            message : 'Server error'
+        })
         
     }
 }

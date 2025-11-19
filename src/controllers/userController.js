@@ -179,10 +179,10 @@ const getUserStats = async (req, res) => {
         res.stats(500).json({
             success : false,
             message : 'Server error'
-        })
+        });
         
     }
-}
+};
 
 
 

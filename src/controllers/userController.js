@@ -156,6 +156,16 @@ const getUserStats = async (req, res) => {
             }]
         });
 
+        // step 4 : create response
+        const stats = {
+            total_posts: totalPosts,
+            total_likes: totalLikes,
+            total_bookmarks: totalBookmarks,
+            total_comments: totalComments,
+            likes_received: likesReceived
+        };
+
+        // step 5 : send re
 
 
 

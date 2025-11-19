@@ -165,7 +165,12 @@ const getUserStats = async (req, res) => {
             likes_received: likesReceived
         };
 
-        // step 5 : send re
+        // step 5 : send response
+        res.stats(200).json({
+            success : true,
+            message : 'User statistics retrieved successfully!',
+            data : stats
+        });
 
 
 

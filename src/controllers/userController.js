@@ -145,6 +145,17 @@ const getUserStats = async (req, res) => {
             where : { user_id : userID }
         });
 
+        // The number of likes the user's posts received
+        const likesReceived = await Like.count({
+            where : {
+                type : 'like'
+            },
+            include : [{
+                model : Post,
+                where : { user_id :userId }
+            }]
+        });
+
 
 
 

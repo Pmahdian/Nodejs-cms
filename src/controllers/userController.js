@@ -142,7 +142,7 @@ const getUserStats = async (req, res) => {
 
         // Number of user comments
         const totalComments = await Comment.count({
-            where : { user_id : userID };
+            where : { user_id : userID }
         });
 
 
